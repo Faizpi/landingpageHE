@@ -62,7 +62,7 @@ export default function Footer({ data }: FooterProps) {
 
                         {/* Social Links */}
                         <div className="mt-6 flex gap-3">
-                            {data.social_links.whatsapp && (
+                            {data.social_links?.whatsapp && (
                                 <a
                                     href={data.social_links.whatsapp}
                                     target="_blank"
@@ -73,7 +73,7 @@ export default function Footer({ data }: FooterProps) {
                                     <WhatsAppIcon className="h-4 w-4" />
                                 </a>
                             )}
-                            {data.social_links.instagram && (
+                            {data.social_links?.instagram && (
                                 <a
                                     href={data.social_links.instagram}
                                     target="_blank"
@@ -84,7 +84,7 @@ export default function Footer({ data }: FooterProps) {
                                     <InstagramIcon className="h-4 w-4" />
                                 </a>
                             )}
-                            {data.social_links.facebook && (
+                            {data.social_links?.facebook && (
                                 <a
                                     href={data.social_links.facebook}
                                     target="_blank"

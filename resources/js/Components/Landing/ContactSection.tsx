@@ -239,7 +239,7 @@ export default function ContactSection({ data }: ContactSectionProps) {
 
                             {/* WhatsApp CTA */}
                             <a
-                                href={data.social_links.whatsapp || '#'}
+                                href={data.social_links?.whatsapp || '#'}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="glass-card flex items-center justify-center gap-3 p-5 transition-all duration-300 hover:scale-[1.01] hover:border-green-500/20"
