@@ -1,0 +1,32 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+
+class ActivityLog extends Model
+{
+    protected $fillable = [
+        'user_id',
+        'action',
+        'description',
+        'ip_address',
+        'user_agent',
+    ];
+
+    /** @return BelongsTo<User, $this> */
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    /** @param Builder<self> $query */
+    public function scopeOrdered(Builder $query): Builder
+    {
+        return $query->latest();
+    }
+}
