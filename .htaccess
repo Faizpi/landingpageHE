@@ -1,0 +1,11 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Prevent direct access to sensitive files
+    RedirectMatch 403 /\.(git|env|lock)
+    RedirectMatch 403 /(composer\.json|package\.json|artisan|phpunit\.xml)
+
+    # Redirect all other traffic to the public/ folder
+    RewriteCond %{REQUEST_URI} !^/public/
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
