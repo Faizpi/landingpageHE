@@ -17,7 +17,7 @@ export default function Landing({
     footer,
 }: LandingPageProps) {
     return (
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false} disableTransitionOnChange>
             <Head title="Hibiscus Efsya | Part of M.B.K Indonesia - Solusi Digital Terpercaya" />
 
             <ScrollProgress />
