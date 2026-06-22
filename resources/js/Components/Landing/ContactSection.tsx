@@ -49,11 +49,7 @@ export default function ContactSection({ data }: ContactSectionProps) {
 
     return (
         <section id="contact" className="relative overflow-hidden py-24 lg:py-32">
-            {/* Background */}
-            <div className="absolute inset-0 bg-radial-gradient opacity-50" />
-            <div className="absolute inset-0 bg-gradient-to-t from-gray-100 dark:from-[#0a0a0a] via-transparent to-transparent" />
-
-            <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 {/* Section Header */}
                 <ScrollReveal direction="up">
                     <div className="mb-16 text-center">
@@ -76,10 +72,10 @@ export default function ContactSection({ data }: ContactSectionProps) {
                     </div>
                 </ScrollReveal>
 
-                <div className="grid gap-12 lg:grid-cols-2">
+                <div className="grid gap-8 lg:grid-cols-2">
                     {/* Left - Contact Form */}
                     <ScrollReveal direction="left">
-                        <div className="glass-card p-6 sm:p-8">
+                        <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm sm:p-8 dark:border-white/10 dark:bg-white/5">
                             <h3 className="mb-6 text-xl font-semibold text-gray-900 dark:text-white">
                                 {t('contact.send')}
                             </h3>
@@ -96,7 +92,7 @@ export default function ContactSection({ data }: ContactSectionProps) {
                                         type="text"
                                         value={formData.name}
                                         onChange={(e) => setData('name', e.target.value)}
-                                        className="w-full rounded-xl border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 px-4 py-3 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-white/30 backdrop-blur-sm transition-colors focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none"
+                                        className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-gray-900 placeholder-gray-400 transition-colors focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none dark:border-white/10 dark:bg-white/5 dark:text-white dark:placeholder-white/30"
                                         placeholder={t('contact.name')}
                                     />
                                     {errors.name && (
@@ -116,7 +112,7 @@ export default function ContactSection({ data }: ContactSectionProps) {
                                         type="email"
                                         value={formData.email}
                                         onChange={(e) => setData('email', e.target.value)}
-                                        className="w-full rounded-xl border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 px-4 py-3 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-white/30 backdrop-blur-sm transition-colors focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none"
+                                        className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-gray-900 placeholder-gray-400 transition-colors focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none dark:border-white/10 dark:bg-white/5 dark:text-white dark:placeholder-white/30"
                                         placeholder="email@contoh.com"
                                     />
                                     {errors.email && (
@@ -136,7 +132,7 @@ export default function ContactSection({ data }: ContactSectionProps) {
                                         type="text"
                                         value={formData.subject}
                                         onChange={(e) => setData('subject', e.target.value)}
-                                        className="w-full rounded-xl border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 px-4 py-3 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-white/30 backdrop-blur-sm transition-colors focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none"
+                                        className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-gray-900 placeholder-gray-400 transition-colors focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none dark:border-white/10 dark:bg-white/5 dark:text-white dark:placeholder-white/30"
                                         placeholder={t('contact.subject')}
                                     />
                                     {errors.subject && (
@@ -158,7 +154,7 @@ export default function ContactSection({ data }: ContactSectionProps) {
                                         rows={4}
                                         value={formData.message}
                                         onChange={(e) => setData('message', e.target.value)}
-                                        className="w-full resize-none rounded-xl border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 px-4 py-3 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-white/30 backdrop-blur-sm transition-colors focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none"
+                                        className="w-full resize-none rounded-xl border border-gray-200 bg-white px-4 py-3 text-gray-900 placeholder-gray-400 transition-colors focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none dark:border-white/10 dark:bg-white/5 dark:text-white dark:placeholder-white/30"
                                         placeholder={t('contact.message')}
                                     />
                                     {errors.message && (
@@ -171,7 +167,7 @@ export default function ContactSection({ data }: ContactSectionProps) {
                                 <button
                                     type="submit"
                                     disabled={processing}
-                                    className="btn-primary-glow w-full disabled:cursor-not-allowed disabled:opacity-50"
+                                    className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-6 py-3 text-sm font-semibold text-white shadow-sm transition-all hover:bg-primary-300 hover:shadow-md disabled:cursor-not-allowed disabled:opacity-50"
                                 >
                                     {processing ? (
                                         <span className="flex items-center gap-2">
@@ -214,9 +210,9 @@ export default function ContactSection({ data }: ContactSectionProps) {
                             {contactItems.map((item, i) => (
                                 <div
                                     key={i}
-                                    className="glass-card group flex items-start gap-4 p-5 transition-all duration-300 hover:scale-[1.01] hover:border-gray-300 dark:hover:border-white/15"
+                                    className="flex items-start gap-4 rounded-2xl border border-gray-200 bg-white p-5 shadow-sm transition-all duration-300 hover:shadow-md dark:border-white/10 dark:bg-white/5"
                                 >
-                                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10">
+                                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary/10">
                                         <item.icon className="h-5 w-5 text-primary" />
                                     </div>
                                     <div>
@@ -224,7 +220,7 @@ export default function ContactSection({ data }: ContactSectionProps) {
                                         {item.href ? (
                                             <a
                                                 href={item.href}
-                                                className="text-base font-medium text-gray-900 dark:text-white transition-colors hover:text-primary"
+                                                className="text-base font-medium text-gray-900 transition-colors hover:text-primary dark:text-white"
                                             >
                                                 {item.value}
                                             </a>
@@ -242,10 +238,10 @@ export default function ContactSection({ data }: ContactSectionProps) {
                                 href={data.social_links?.whatsapp || '#'}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="glass-card flex items-center justify-center gap-3 p-5 transition-all duration-300 hover:scale-[1.01] hover:border-green-500/20"
+                                className="flex items-center justify-center gap-3 rounded-2xl border border-gray-200 bg-white p-5 shadow-sm transition-all duration-300 hover:border-green-500/30 hover:shadow-md dark:border-white/10 dark:bg-white/5"
                             >
-                                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-green-500/10">
-                                    <HeroChatBubble className="h-6 w-6 text-green-400" />
+                                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-green-500/10">
+                                    <HeroChatBubble className="h-6 w-6 text-green-500" />
                                 </div>
                                 <div>
                                     <p className="text-base font-semibold text-gray-900 dark:text-white">

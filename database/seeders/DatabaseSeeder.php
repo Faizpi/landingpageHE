@@ -12,6 +12,8 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             HibiscusSeeder::class,
+            ProductSeeder::class,
+            InspirationSeeder::class,
         ]);
     }
 }

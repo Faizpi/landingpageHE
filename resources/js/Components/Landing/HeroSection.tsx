@@ -45,21 +45,19 @@ export default function HeroSection({ data }: HeroSectionProps) {
     return (
         <section
             id="hero"
-            className="bg-radial-gradient relative flex min-h-screen items-center overflow-hidden pt-24 pb-16"
+            className="relative flex min-h-screen items-center overflow-hidden bg-white dark:bg-[#0a0a0a] pt-24 pb-16"
         >
-            {/* Background grid */}
-            <div className="bg-grid absolute inset-0 opacity-40" />
-
-            {/* Decorative blurs */}
-            <div className="absolute top-20 -left-32 h-96 w-96 rounded-full bg-primary/10 blur-[120px]" />
-            <div className="absolute -right-32 bottom-20 h-96 w-96 rounded-full bg-primary/5 blur-[120px]" />
+            {/* Subtle top gradient accent */}
+            <div className="absolute inset-0 pointer-events-none">
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full bg-primary/[0.03] blur-[100px]" />
+            </div>
 
             <div className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
                 <motion.div
                     variants={containerVariants}
                     initial="hidden"
                     animate="visible"
-                    className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16"
+                    className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20"
                 >
                     {/* Left Column - Content */}
                     <div className="space-y-8">
@@ -76,7 +74,7 @@ export default function HeroSection({ data }: HeroSectionProps) {
                         {/* Title */}
                         <motion.h1
                             variants={itemVariants}
-                            className="text-4xl leading-tight font-extrabold tracking-tight text-black dark:text-white sm:text-5xl lg:text-6xl"
+                            className="text-4xl leading-[1.1] font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-5xl lg:text-6xl"
                         >
                             {data.title}
                             {data.title_highlight && (
@@ -90,7 +88,7 @@ export default function HeroSection({ data }: HeroSectionProps) {
                         {data.description && (
                             <motion.p
                                 variants={itemVariants}
-                                className="max-w-lg text-lg leading-relaxed text-black/60 dark:text-white/60"
+                                className="max-w-lg text-lg leading-relaxed text-gray-500 dark:text-white/50"
                             >
                                 {data.description}
                             </motion.p>
@@ -99,21 +97,21 @@ export default function HeroSection({ data }: HeroSectionProps) {
                         {/* CTA Buttons */}
                         <motion.div
                             variants={itemVariants}
-                            className="flex flex-wrap gap-4"
+                            className="flex flex-wrap items-center gap-4"
                         >
                             {data.button_primary_text && (
                                 <a
                                     href={data.button_primary_link || '#contact'}
-                                    className="btn-primary-glow"
+                                    className="group inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm font-semibold text-white shadow-sm shadow-primary/20 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md hover:shadow-primary/30"
                                 >
                                     {data.button_primary_text || t('hero.cta_primary')}
-                                    <HeroArrowRight className="h-4 w-4" />
+                                    <HeroArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
                                 </a>
                             )}
                             {data.button_secondary_text && (
                                 <a
                                     href={data.button_secondary_link || '#services'}
-                                    className="btn-glass"
+                                    className="inline-flex items-center gap-2 rounded-full border border-gray-200 bg-white px-7 py-3.5 text-sm font-semibold text-gray-700 transition-all duration-300 hover:-translate-y-0.5 hover:border-gray-300 hover:shadow-sm dark:border-white/10 dark:bg-transparent dark:text-white/80 dark:hover:border-white/20"
                                 >
                                     {data.button_secondary_text || t('hero.cta_secondary')}
                                 </a>
@@ -124,14 +122,14 @@ export default function HeroSection({ data }: HeroSectionProps) {
                         {stats.length > 0 && (
                             <motion.div
                                 variants={itemVariants}
-                                className="flex gap-8 border-t border-black/10 dark:border-white/10 pt-8"
+                                className="flex gap-8 border-t border-gray-100 dark:border-white/10 pt-8"
                             >
                                 {stats.map((stat, i) => (
                                     <div key={i} className="text-center">
-                                        <div className="text-2xl font-bold text-black dark:text-white sm:text-3xl">
+                                        <div className="text-2xl font-bold text-gray-900 dark:text-white sm:text-3xl">
                                             {stat.value}
                                         </div>
-                                        <div className="mt-1 text-sm text-black/50 dark:text-white/50">
+                                        <div className="mt-1 text-sm text-gray-400 dark:text-white/40">
                                             {stat.label}
                                         </div>
                                     </div>
@@ -145,11 +143,11 @@ export default function HeroSection({ data }: HeroSectionProps) {
                         variants={itemVariants}
                         className="relative flex items-center justify-center lg:justify-end"
                     >
-                        <div className="glass-card-red relative w-full max-w-md p-4 sm:max-w-lg">
+                        <div className="relative w-full max-w-md rounded-3xl border border-gray-100 bg-white p-4 shadow-lg shadow-black/[0.04] sm:max-w-lg dark:border-white/10 dark:bg-[#111]">
                             <img
                                 src={heroImage}
                                 alt="Hibiscus Efsya"
-                                className="w-full rounded-xl object-cover"
+                                className="w-full rounded-2xl object-cover"
                             />
 
                             {/* Floating satisfaction card */}
@@ -158,15 +156,15 @@ export default function HeroSection({ data }: HeroSectionProps) {
                                 distance={12}
                                 duration={5}
                             >
-                                <div className="flex items-center gap-3 rounded-2xl border border-green-500/20 bg-white/90 dark:bg-[#161616]/95 px-5 py-4 shadow-xl shadow-black/10 dark:shadow-black/40 backdrop-blur-md">
-                                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-green-100 dark:bg-green-500/15">
+                                <div className="flex items-center gap-3 rounded-2xl border border-gray-100 bg-white px-5 py-4 shadow-lg shadow-black/[0.06] dark:border-white/10 dark:bg-[#161616]">
+                                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-green-50 dark:bg-green-500/10">
                                         <HeroCheckCircle className="h-5 w-5 text-green-600 dark:text-green-400" />
                                     </div>
                                     <div className="min-w-0">
                                         <p className="text-sm font-semibold text-gray-900 dark:text-white">
                                             {t('hero.trusted')}
                                         </p>
-                                        <p className="text-xs text-gray-500 dark:text-white/50">
+                                        <p className="text-xs text-gray-400 dark:text-white/40">
                                             {t('hero.since')}
                                         </p>
                                     </div>
@@ -190,7 +188,7 @@ export default function HeroSection({ data }: HeroSectionProps) {
                         e.preventDefault();
                         document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' });
                     }}
-                    className="flex flex-col items-center gap-2 text-gray-500 dark:text-white/30 transition-colors hover:text-gray-700 dark:hover:text-white/60"
+                    className="flex flex-col items-center gap-2 text-gray-400 transition-colors hover:text-gray-600 dark:text-white/30 dark:hover:text-white/60"
                 >
                     <span className="text-xs">{t('hero.scroll')}</span>
                     <HeroMousePointer className="h-5 w-5 animate-scroll-indicator" />

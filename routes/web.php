@@ -2,15 +2,20 @@
 
 declare(strict_types=1);
 
-use App\Http\Controllers\LandingController;
+use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\CatalogController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
-use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-// Public landing page
-Route::get('/', [LandingController::class, 'index'])->name('landing');
-Route::post('/contact', [LandingController::class, 'submitContact'])->name('contact.submit');
+// Public routes for Catalog, Articles, and Home
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/katalog', [CatalogController::class, 'index'])->name('catalog.index');
+Route::get('/katalog/{category:slug}', [CatalogController::class, 'category'])->name('catalog.category');
+Route::get('/produk/{product:slug}', [CatalogController::class, 'show'])->name('catalog.show');
+Route::get('/artikel', [ArticleController::class, 'index'])->name('article.index');
+Route::get('/artikel/{inspiration:slug}', [ArticleController::class, 'show'])->name('article.show');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');

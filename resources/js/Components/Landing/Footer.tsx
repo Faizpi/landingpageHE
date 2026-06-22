@@ -38,9 +38,9 @@ export default function Footer({ data }: FooterProps) {
     const currentYear = new Date().getFullYear();
 
     return (
-        <footer className="relative border-t border-gray-200 dark:border-white/[0.06] bg-white dark:bg-[#0a0a0a]">
+        <footer className="border-t border-gray-200 bg-white dark:border-white/[0.06] dark:bg-[#0a0a0a]">
             <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-                <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+                <div className="grid gap-12 lg:grid-cols-4">
                     {/* Brand Column */}
                     <div className="lg:col-span-1">
                         <div className="flex items-center gap-2">
@@ -67,7 +67,7 @@ export default function Footer({ data }: FooterProps) {
                                     href={data.social_links.whatsapp}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex h-9 w-9 items-center justify-center rounded-full border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 text-gray-500 dark:text-white/50 transition-all hover:border-green-500/30 hover:text-green-500 dark:hover:text-green-400"
+                                    className="flex h-10 w-10 items-center justify-center rounded-full border border-gray-200 bg-gray-50 text-gray-500 transition-all hover:border-green-500/30 hover:bg-green-500/10 hover:text-green-500 dark:border-white/10 dark:bg-white/5 dark:text-white/50 dark:hover:text-green-400"
                                     aria-label="WhatsApp"
                                 >
                                     <WhatsAppIcon className="h-4 w-4" />
@@ -78,7 +78,7 @@ export default function Footer({ data }: FooterProps) {
                                     href={data.social_links.instagram}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex h-9 w-9 items-center justify-center rounded-full border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 text-gray-500 dark:text-white/50 transition-all hover:border-pink-500/30 hover:text-pink-500 dark:hover:text-pink-400"
+                                    className="flex h-10 w-10 items-center justify-center rounded-full border border-gray-200 bg-gray-50 text-gray-500 transition-all hover:border-pink-500/30 hover:bg-pink-500/10 hover:text-pink-500 dark:border-white/10 dark:bg-white/5 dark:text-white/50 dark:hover:text-pink-400"
                                     aria-label="Instagram"
                                 >
                                     <InstagramIcon className="h-4 w-4" />
@@ -89,7 +89,7 @@ export default function Footer({ data }: FooterProps) {
                                     href={data.social_links.facebook}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex h-9 w-9 items-center justify-center rounded-full border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 text-gray-500 dark:text-white/50 transition-all hover:border-blue-500/30 hover:text-blue-500 dark:hover:text-blue-400"
+                                    className="flex h-10 w-10 items-center justify-center rounded-full border border-gray-200 bg-gray-50 text-gray-500 transition-all hover:border-blue-500/30 hover:bg-blue-500/10 hover:text-blue-500 dark:border-white/10 dark:bg-white/5 dark:text-white/50 dark:hover:text-blue-400"
                                     aria-label="Facebook"
                                 >
                                     <FacebookIcon className="h-4 w-4" />
@@ -101,9 +101,9 @@ export default function Footer({ data }: FooterProps) {
                     {/* Links Columns */}
                     {data.links && data.links.length > 0 ? (
                         <div className="grid grid-cols-2 gap-8 sm:col-span-1 sm:grid-cols-3 lg:col-span-3">
-                            {/* Group links into columns */}
+                            {/* Navigasi */}
                             <div>
-                                <h4 className="mb-4 text-sm font-semibold tracking-wider text-gray-900 dark:text-white/80 uppercase">
+                                <h4 className="mb-5 text-sm font-semibold uppercase tracking-wider text-gray-900 dark:text-white/80">
                                     {t('nav.about')}
                                 </h4>
                                 <ul className="space-y-3">
@@ -122,7 +122,7 @@ export default function Footer({ data }: FooterProps) {
                                                         .querySelector(link.url)
                                                         ?.scrollIntoView({ behavior: 'smooth' });
                                                 }}
-                                                className="text-sm text-gray-500 dark:text-white/40 transition-colors hover:text-gray-900 dark:hover:text-white"
+                                                className="text-sm text-gray-500 transition-colors hover:text-gray-900 dark:text-white/40 dark:hover:text-white"
                                             >
                                                 {link.label}
                                             </a>
@@ -131,8 +131,9 @@ export default function Footer({ data }: FooterProps) {
                                 </ul>
                             </div>
 
+                            {/* Layanan */}
                             <div>
-                                <h4 className="mb-4 text-sm font-semibold tracking-wider text-gray-900 dark:text-white/80 uppercase">
+                                <h4 className="mb-5 text-sm font-semibold uppercase tracking-wider text-gray-900 dark:text-white/80">
                                     {t('footer.services')}
                                 </h4>
                                 <ul className="space-y-3">
@@ -140,7 +141,7 @@ export default function Footer({ data }: FooterProps) {
                                         <li key={i}>
                                             <a
                                                 href={link.url}
-                                                className="text-sm text-gray-500 dark:text-white/40 transition-colors hover:text-gray-900 dark:hover:text-white"
+                                                className="text-sm text-gray-500 transition-colors hover:text-gray-900 dark:text-white/40 dark:hover:text-white"
                                             >
                                                 {link.label}
                                             </a>
@@ -149,8 +150,9 @@ export default function Footer({ data }: FooterProps) {
                                 </ul>
                             </div>
 
+                            {/* Perusahaan */}
                             <div>
-                                <h4 className="mb-4 text-sm font-semibold tracking-wider text-gray-900 dark:text-white/80 uppercase">
+                                <h4 className="mb-5 text-sm font-semibold uppercase tracking-wider text-gray-900 dark:text-white/80">
                                     {t('footer.company')}
                                 </h4>
                                 <ul className="space-y-3">
@@ -158,7 +160,7 @@ export default function Footer({ data }: FooterProps) {
                                         <li key={i}>
                                             <a
                                                 href={link.url}
-                                                className="text-sm text-gray-500 dark:text-white/40 transition-colors hover:text-gray-900 dark:hover:text-white"
+                                                className="text-sm text-gray-500 transition-colors hover:text-gray-900 dark:text-white/40 dark:hover:text-white"
                                             >
                                                 {link.label}
                                             </a>
@@ -175,7 +177,7 @@ export default function Footer({ data }: FooterProps) {
                                                             .querySelector('#about')
                                                             ?.scrollIntoView({ behavior: 'smooth' });
                                                     }}
-                                                    className="text-sm text-gray-500 dark:text-white/40 transition-colors hover:text-gray-900 dark:hover:text-white"
+                                                    className="text-sm text-gray-500 transition-colors hover:text-gray-900 dark:text-white/40 dark:hover:text-white"
                                                 >
                                                     {t('footer.about')}
                                                 </a>
@@ -189,7 +191,7 @@ export default function Footer({ data }: FooterProps) {
                                                             .querySelector('#contact')
                                                             ?.scrollIntoView({ behavior: 'smooth' });
                                                     }}
-                                                    className="text-sm text-gray-500 dark:text-white/40 transition-colors hover:text-gray-900 dark:hover:text-white"
+                                                    className="text-sm text-gray-500 transition-colors hover:text-gray-900 dark:text-white/40 dark:hover:text-white"
                                                 >
                                                     {t('footer.contact')}
                                                 </a>
@@ -202,7 +204,7 @@ export default function Footer({ data }: FooterProps) {
                     ) : (
                         <div className="grid grid-cols-2 gap-8 sm:col-span-1 lg:col-span-3">
                             <div>
-                                <h4 className="mb-4 text-sm font-semibold tracking-wider text-gray-900 dark:text-white/80 uppercase">
+                                <h4 className="mb-5 text-sm font-semibold uppercase tracking-wider text-gray-900 dark:text-white/80">
                                     Navigasi
                                 </h4>
                                 <ul className="space-y-3">
@@ -221,7 +223,7 @@ export default function Footer({ data }: FooterProps) {
                                                         .querySelector(link.url)
                                                         ?.scrollIntoView({ behavior: 'smooth' });
                                                 }}
-                                                className="text-sm text-gray-500 dark:text-white/40 transition-colors hover:text-gray-900 dark:hover:text-white"
+                                                className="text-sm text-gray-500 transition-colors hover:text-gray-900 dark:text-white/40 dark:hover:text-white"
                                             >
                                                 {link.label}
                                             </a>
@@ -230,7 +232,7 @@ export default function Footer({ data }: FooterProps) {
                                 </ul>
                             </div>
                             <div>
-                                <h4 className="mb-4 text-sm font-semibold tracking-wider text-gray-900 dark:text-white/80 uppercase">
+                                <h4 className="mb-5 text-sm font-semibold uppercase tracking-wider text-gray-900 dark:text-white/80">
                                     {t('footer.company')}
                                 </h4>
                                 <ul className="space-y-3">
@@ -243,7 +245,7 @@ export default function Footer({ data }: FooterProps) {
                                                     .querySelector('#about')
                                                     ?.scrollIntoView({ behavior: 'smooth' });
                                             }}
-                                            className="text-sm text-gray-500 dark:text-white/40 transition-colors hover:text-gray-900 dark:hover:text-white"
+                                            className="text-sm text-gray-500 transition-colors hover:text-gray-900 dark:text-white/40 dark:hover:text-white"
                                         >
                                             {t('footer.about')}
                                         </a>
@@ -257,7 +259,7 @@ export default function Footer({ data }: FooterProps) {
                                                     .querySelector('#contact')
                                                     ?.scrollIntoView({ behavior: 'smooth' });
                                             }}
-                                            className="text-sm text-gray-500 dark:text-white/40 transition-colors hover:text-gray-900 dark:hover:text-white"
+                                            className="text-sm text-gray-500 transition-colors hover:text-gray-900 dark:text-white/40 dark:hover:text-white"
                                         >
                                             {t('footer.contact')}
                                         </a>

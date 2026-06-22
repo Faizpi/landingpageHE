@@ -65,7 +65,7 @@ export default function Navbar() {
             onClick={(e) => { e.preventDefault(); scrollToSection(href); }}
             className={isMobile
                 ? 'text-xl font-medium text-gray-800 dark:text-white/80 transition-colors hover:text-primary'
-                : 'rounded-full px-4 py-2 text-sm font-medium text-gray-600 dark:text-white/70 transition-colors hover:bg-black/5 dark:hover:bg-white/5 hover:text-gray-900 dark:hover:text-white'
+                : 'rounded-lg px-3 py-2 text-sm font-medium text-gray-600 dark:text-white/70 transition-colors hover:bg-gray-100 dark:hover:bg-white/5 hover:text-gray-900 dark:hover:text-white'
             }
         >
             {locale === 'id' ? label : labelEn}
@@ -78,33 +78,33 @@ export default function Navbar() {
                 initial={{ y: -100, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.6, ease: 'easeOut' }}
-                className={`fixed top-4 right-0 left-0 z-50 mx-auto w-[95%] max-w-5xl rounded-full px-4 sm:px-6 py-3 transition-all duration-500 ${scrolled ? 'nav-glass-scrolled' : 'nav-glass'}`}
+                className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${scrolled ? 'nav-glass-scrolled' : 'nav-glass'}`}
             >
-                <div className="flex items-center justify-between">
-                    {/* Logo */}
+                <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+                    {/* Logo — left */}
                     <a href="#hero" onClick={(e) => { e.preventDefault(); scrollToSection('#hero'); }} className="flex items-center gap-2.5 shrink-0">
-                        <img src={logoImg} alt="Hibiscus Efsya" className="h-9 w-9 rounded-full object-cover" />
-                        <span className="text-lg font-bold text-gray-900 dark:text-white hidden sm:inline">
+                        <img src={logoImg} alt="Hibiscus Efsya" className="h-8 w-8 rounded-full object-cover" />
+                        <span className="text-lg font-bold text-gray-900 dark:text-white">
                             Hibiscus <span className="text-primary">Efsya</span>
                         </span>
                     </a>
 
-                    {/* Desktop Nav Links */}
+                    {/* Center Nav Links — desktop */}
                     <div className="hidden items-center gap-1 md:flex">
                         {navLinks.map((l) => nav(l.href, l.label, l.labelEn))}
                     </div>
 
-                    {/* Desktop Right: Settings Dropdown + CTA */}
+                    {/* Right: Settings Dropdown + CTA — desktop */}
                     <div className="hidden items-center gap-3 md:flex">
                         {/* Settings Dropdown */}
                         {mounted && (
                             <div ref={settingsRef} className="relative">
                                 <button
                                     onClick={() => setSettingsOpen(!settingsOpen)}
-                                    className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 dark:bg-white/10 border border-gray-200 dark:border-white/10 text-gray-600 dark:text-white/60 transition-all hover:bg-gray-200 dark:hover:bg-white/15 hover:rotate-90"
+                                    className="flex h-9 w-9 items-center justify-center rounded-lg border border-gray-200 bg-gray-50 text-gray-600 transition-all hover:bg-gray-100 hover:rotate-90 dark:border-white/10 dark:bg-white/5 dark:text-white/60 dark:hover:bg-white/10"
                                     title="Pengaturan"
                                 >
-                                    <HeroCog className="h-5 w-5" />
+                                    <HeroCog className="h-4 w-4" />
                                 </button>
 
                                 <AnimatePresence>
@@ -114,7 +114,7 @@ export default function Navbar() {
                                             animate={{ opacity: 1, y: 0, scale: 1 }}
                                             exit={{ opacity: 0, y: 8, scale: 0.95 }}
                                             transition={{ duration: 0.15 }}
-                                            className="absolute right-0 top-full mt-2 w-64 rounded-3xl border border-gray-200 dark:border-white/10 bg-white/95 dark:bg-[#1a1a1a]/95 shadow-2xl shadow-black/10 dark:shadow-black/40 backdrop-blur-xl p-4"
+                                            className="absolute right-0 top-full mt-2 w-64 rounded-2xl border border-gray-200 bg-white p-4 shadow-lg dark:border-white/10 dark:bg-[#1a1a1a]"
                                         >
                                             {/* Theme */}
                                             <p className="px-1 pb-3 text-[11px] font-bold text-gray-400 dark:text-gray-500 uppercase tracking-widest text-center">TEMA / THEME</p>
@@ -123,9 +123,9 @@ export default function Navbar() {
                                                     <button
                                                         key={value}
                                                         onClick={() => setTheme(value)}
-                                                        className={`flex flex-col flex-1 items-center justify-center gap-2 rounded-2xl py-3 px-2 transition-all ${
+                                                        className={`flex flex-col flex-1 items-center justify-center gap-2 rounded-xl py-3 px-2 transition-all ${
                                                             theme === value
-                                                                ? 'bg-primary text-white shadow-md shadow-primary/30 ring-1 ring-primary/50'
+                                                                ? 'bg-primary text-white shadow-sm ring-1 ring-primary/50'
                                                                 : 'bg-gray-50 dark:bg-white/5 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-white/10 border border-gray-200 dark:border-white/5'
                                                         }`}
                                                     >
@@ -142,9 +142,9 @@ export default function Navbar() {
                                                     <button
                                                         key={lang}
                                                         onClick={() => setLocale(lang)}
-                                                        className={`flex flex-col items-center justify-center gap-1 rounded-2xl py-3 px-2 transition-all ${
+                                                        className={`flex flex-col items-center justify-center gap-1 rounded-xl py-3 px-2 transition-all ${
                                                             locale === lang
-                                                                ? 'bg-primary text-white shadow-md shadow-primary/30 ring-1 ring-primary/50'
+                                                                ? 'bg-primary text-white shadow-sm ring-1 ring-primary/50'
                                                                 : 'bg-gray-50 dark:bg-white/5 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-white/10 border border-gray-200 dark:border-white/5'
                                                         }`}
                                                     >
@@ -168,7 +168,7 @@ export default function Navbar() {
                     <div className="md:hidden">
                         <button
                             onClick={() => setMobileOpen(!mobileOpen)}
-                            className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 dark:bg-white/10 border border-gray-200 dark:border-white/10"
+                            className="flex h-9 w-9 items-center justify-center rounded-lg border border-gray-200 bg-gray-50 dark:border-white/10 dark:bg-white/5"
                             aria-label="Toggle menu"
                         >
                             {mobileOpen ? (
@@ -181,7 +181,7 @@ export default function Navbar() {
                 </div>
             </motion.nav>
 
-            {/* Mobile Drawer */}
+            {/* Mobile Drawer — full-screen */}
             <AnimatePresence>
                 {mobileOpen && (
                     <motion.div
@@ -189,9 +189,27 @@ export default function Navbar() {
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.3 }}
-                        className="fixed inset-0 z-40 bg-white/95 dark:bg-[#0a0a0a]/95 backdrop-blur-xl md:hidden"
+                        className="fixed inset-0 z-40 bg-white dark:bg-[#0a0a0a] md:hidden"
                     >
-                        <div className="flex h-full flex-col items-center justify-center gap-6 px-8">
+                        {/* Top bar inside drawer */}
+                        <div className="flex h-16 items-center justify-between border-b border-gray-200 px-4 dark:border-white/10">
+                            <a href="#hero" onClick={(e) => { e.preventDefault(); scrollToSection('#hero'); }} className="flex items-center gap-2.5">
+                                <img src={logoImg} alt="Hibiscus Efsya" className="h-8 w-8 rounded-full object-cover" />
+                                <span className="text-lg font-bold text-gray-900 dark:text-white">
+                                    Hibiscus <span className="text-primary">Efsya</span>
+                                </span>
+                            </a>
+                            <button
+                                onClick={() => setMobileOpen(false)}
+                                className="flex h-9 w-9 items-center justify-center rounded-lg border border-gray-200 bg-gray-50 dark:border-white/10 dark:bg-white/5"
+                                aria-label="Close menu"
+                            >
+                                <HeroXMark className="h-5 w-5 text-gray-700 dark:text-white" />
+                            </button>
+                        </div>
+
+                        {/* Drawer body */}
+                        <div className="flex flex-col items-center gap-2 overflow-y-auto px-6 pt-8 pb-12" style={{ height: 'calc(100vh - 4rem)' }}>
                             {navLinks.map((l, i) => nav(l.href, l.label, l.labelEn, true, i * 0.08))}
 
                             {/* Mobile: Theme + Language */}
@@ -199,7 +217,7 @@ export default function Navbar() {
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.3, duration: 0.3 }}
-                                className="flex w-full max-w-xs flex-col gap-6 mt-8 p-6 rounded-3xl bg-gray-50/50 dark:bg-white/5 border border-gray-200/50 dark:border-white/10"
+                                className="flex w-full max-w-xs flex-col gap-6 mt-6 p-5 rounded-2xl bg-gray-50 border border-gray-200 dark:bg-white/5 dark:border-white/10"
                             >
                                 {/* Theme */}
                                 <div className="space-y-3">
@@ -209,9 +227,9 @@ export default function Navbar() {
                                             <button
                                                 key={value}
                                                 onClick={() => setTheme(value)}
-                                                className={`flex flex-col flex-1 items-center justify-center gap-2 rounded-2xl py-3 px-2 transition-all ${
+                                                className={`flex flex-col flex-1 items-center justify-center gap-2 rounded-xl py-3 px-2 transition-all ${
                                                     theme === value
-                                                        ? 'bg-primary text-white shadow-md ring-1 ring-primary/50'
+                                                        ? 'bg-primary text-white shadow-sm ring-1 ring-primary/50'
                                                         : 'bg-white dark:bg-white/5 text-gray-500 dark:text-gray-400 border border-gray-200 dark:border-white/5'
                                                 }`}
                                             >
@@ -230,9 +248,9 @@ export default function Navbar() {
                                             <button
                                                 key={lang}
                                                 onClick={() => setLocale(lang)}
-                                                className={`flex flex-col items-center justify-center gap-1 rounded-2xl py-3 transition-all ${
+                                                className={`flex flex-col items-center justify-center gap-1 rounded-xl py-3 transition-all ${
                                                     locale === lang
-                                                        ? 'bg-primary text-white shadow-md ring-1 ring-primary/50'
+                                                        ? 'bg-primary text-white shadow-sm ring-1 ring-primary/50'
                                                         : 'bg-white dark:bg-white/5 text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-white/5'
                                                 }`}
                                             >
@@ -251,7 +269,7 @@ export default function Navbar() {
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.4, duration: 0.3 }}
                                 onClick={(e) => { e.preventDefault(); scrollToSection('#contact'); }}
-                                className="btn-primary-glow mt-2 w-full max-w-xs"
+                                className="btn-primary-glow mt-4 w-full max-w-xs"
                             >
                                 Hubungi Kami
                             </motion.a>

@@ -13,10 +13,7 @@ export default function AboutSection({ data }: AboutSectionProps) {
     const aboutImage = data.image ? `/storage/${data.image}` : null;
 
     return (
-        <section id="about" className="relative overflow-hidden py-24 lg:py-32">
-            {/* Background */}
-            <div className="absolute inset-0 bg-radial-bottom" />
-
+        <section id="about" className="relative overflow-hidden bg-white py-24 lg:py-32 dark:bg-[#0a0a0a]">
             <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 {/* Section Label */}
                 {data.section_label && (
@@ -27,11 +24,11 @@ export default function AboutSection({ data }: AboutSectionProps) {
                     </ScrollReveal>
                 )}
 
-                <div className="grid items-center gap-16 lg:grid-cols-2">
+                <div className="grid items-center gap-16 lg:grid-cols-2 lg:gap-20">
                     {/* Left Column - Heading + Features */}
                     <div>
                         <ScrollReveal direction="left">
-                            <h2 className="text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl lg:text-5xl">
+                            <h2 className="text-3xl font-bold leading-tight tracking-tight text-gray-900 dark:text-white sm:text-4xl lg:text-5xl">
                                 {data.title}
                                 {data.title_highlight && (
                                     <span className="gradient-text block sm:inline">
@@ -43,7 +40,7 @@ export default function AboutSection({ data }: AboutSectionProps) {
 
                         {data.description && (
                             <ScrollReveal direction="left" delay={0.1}>
-                                <p className="mt-6 max-w-lg text-lg leading-relaxed text-gray-600 dark:text-white/60">
+                                <p className="mt-6 max-w-lg text-lg leading-relaxed text-gray-500 dark:text-white/50">
                                     {data.description}
                                 </p>
                             </ScrollReveal>
@@ -54,12 +51,14 @@ export default function AboutSection({ data }: AboutSectionProps) {
                             <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2">
                                     {data.features.map((feature, i) => (
                                         <ScrollReveal key={i} direction="up" delay={0.1 + i * 0.1}>
-                                            <div className="glass-card group cursor-default p-5 transition-all duration-300 hover:scale-[1.02] hover:border-white/15">
-                                                <div className="mb-3 text-3xl">{feature.icon}</div>
+                                            <div className="group rounded-2xl border border-gray-100 bg-white p-5 transition-all duration-300 hover:border-gray-200 hover:shadow-md hover:shadow-black/[0.04] dark:border-white/10 dark:bg-[#111] dark:hover:border-white/15 dark:hover:shadow-black/40">
+                                                <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-primary/5 text-2xl dark:bg-primary/10">
+                                                    {feature.icon}
+                                                </div>
                                                 <h3 className="text-base font-semibold text-gray-900 dark:text-white">
                                                     {feature.title}
                                                 </h3>
-                                                <p className="mt-1.5 text-sm leading-relaxed text-gray-600 dark:text-white/50">
+                                                <p className="mt-1.5 text-sm leading-relaxed text-gray-500 dark:text-white/40">
                                                     {feature.description}
                                                 </p>
                                             </div>
@@ -82,7 +81,7 @@ export default function AboutSection({ data }: AboutSectionProps) {
 
                                 {/* Central logo card */}
                                 <FloatingElement distance={15} duration={7}>
-                                    <div className="glass-card-red relative z-10 flex h-48 w-48 flex-col items-center justify-center p-6 text-center">
+                                    <div className="relative z-10 flex h-48 w-48 flex-col items-center justify-center rounded-2xl border border-primary/15 bg-white p-6 text-center shadow-lg shadow-black/[0.05] dark:bg-[#111]">
                                         {aboutImage ? (
                                             <img
                                                 src={aboutImage}
@@ -90,12 +89,12 @@ export default function AboutSection({ data }: AboutSectionProps) {
                                                 className="h-20 w-20 rounded-full object-cover"
                                             />
                                         ) : (
-                                            <div className="mb-3 flex h-24 w-24 items-center justify-center rounded-full bg-white dark:bg-white/10 p-2">
+                                            <div className="mb-3 flex h-24 w-24 items-center justify-center rounded-full bg-white p-2 dark:bg-white/5">
                                                 <img src={logoImg} alt="Hibiscus Efsya" className="w-full h-full object-cover rounded-full" />
                                             </div>
                                         )}
                                         <p className="text-sm font-bold text-gray-900 dark:text-white mt-2">Hibiscus Efsya</p>
-                                        <p className="text-xs text-gray-500 dark:text-white/50">{t('about.why_partner')}</p>
+                                        <p className="text-xs text-gray-400 dark:text-white/40">{t('about.why_partner')}</p>
                                     </div>
                                 </FloatingElement>
                             </div>
@@ -108,12 +107,12 @@ export default function AboutSection({ data }: AboutSectionProps) {
                                     {data.stats.map((stat, i) => (
                                         <div
                                             key={i}
-                                            className="glass-card p-4 text-center"
+                                            className="rounded-2xl border border-gray-100 bg-white p-5 text-center transition-all duration-300 hover:border-gray-200 hover:shadow-sm dark:border-white/10 dark:bg-[#111] dark:hover:border-white/15"
                                         >
-                                            <div className="text-xl font-bold text-primary sm:text-2xl">
+                                            <div className="text-2xl font-bold text-primary sm:text-3xl">
                                                 {stat.value}
                                             </div>
-                                            <div className="mt-1 text-xs text-gray-500 dark:text-white/50 sm:text-sm">
+                                            <div className="mt-1 text-xs text-gray-400 dark:text-white/40 sm:text-sm">
                                                 {stat.label}
                                             </div>
                                         </div>
