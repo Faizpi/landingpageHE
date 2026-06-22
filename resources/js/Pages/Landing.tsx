@@ -23,19 +23,10 @@ export default function Landing({
             <ScrollProgress />
             <Navbar />
 
-            <main className="min-h-screen bg-gray-50 dark:bg-[#0a0a0a] transition-colors duration-300">
+            <main className="min-h-screen bg-white dark:bg-[#0a0a0a] transition-colors duration-300">
                 <HeroSection data={hero} />
-
-                <div className="section-separator" />
-
                 <AboutSection data={about} />
-
-                <div className="section-separator" />
-
                 <ServicesSection categories={categories} />
-
-                <div className="section-separator" />
-
                 <ContactSection data={contact} />
             </main>
 
