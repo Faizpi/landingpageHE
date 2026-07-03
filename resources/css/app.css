@@ -104,19 +104,8 @@
         scroll-margin-top: 6rem;
     }
 
-    .luxury-overlap-top::before {
-        content: '';
-        @apply pointer-events-none absolute left-1/2 top-0 hidden h-20 w-[min(72rem,calc(100%-2rem))] -translate-x-1/2 -translate-y-1/2 rounded-[2rem] lg:block;
-        background: linear-gradient(135deg, rgba(255,255,255,0.86), rgba(255,255,255,0.42));
-        border: 1px solid rgba(229, 26, 26, 0.08);
-        box-shadow: 0 30px 90px rgba(15, 23, 42, 0.08);
-        backdrop-filter: blur(18px);
-    }
-
-    .dark .luxury-overlap-top::before {
-        background: linear-gradient(135deg, rgba(255,255,255,0.055), rgba(255,255,255,0.015));
-        border-color: rgba(255, 255, 255, 0.08);
-        box-shadow: 0 30px 90px rgba(0, 0, 0, 0.38);
+    .luxury-overlap-top {
+        scroll-margin-top: 6rem;
     }
 
     .luxury-badge {
