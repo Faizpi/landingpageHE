@@ -40,14 +40,8 @@ export default function HeroSection({ data }: HeroSectionProps) {
     return (
         <section
             id="hero"
-            className="relative flex min-h-screen items-center overflow-hidden bg-[#fff8f1] pt-24 pb-16 dark:bg-[#0a0a0a]"
+            className="relative flex min-h-screen items-center overflow-hidden bg-[#faf7f2] pt-24 pb-16 dark:bg-[#0a0a0a]"
         >
-            {/* Subtle background accents */}
-            <div className="pointer-events-none absolute inset-0">
-                <div className="absolute top-0 left-1/2 h-[400px] w-[800px] -translate-x-1/2 rounded-full bg-primary/[0.04] blur-[100px]" />
-                <div className="absolute right-[-10rem] top-1/3 h-[24rem] w-[24rem] rounded-full bg-amber-200/20 blur-3xl dark:bg-amber-300/5" />
-            </div>
-
             <div className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
                 <motion.div
                     variants={containerVariants}
@@ -98,7 +92,7 @@ export default function HeroSection({ data }: HeroSectionProps) {
                             {data.button_primary_text && (
                                 <a
                                     href={data.button_primary_link || '#contact'}
-                                    className="group inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm font-semibold text-white shadow-[0_18px_45px_rgba(229,26,26,0.25)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_24px_55px_rgba(229,26,26,0.34)]"
+                                    className="group inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-primary-300 hover:shadow-md"
                                 >
                                     {data.button_primary_text || t('hero.cta_primary')}
                                     <HeroArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
@@ -107,7 +101,7 @@ export default function HeroSection({ data }: HeroSectionProps) {
                             {data.button_secondary_text && (
                                 <a
                                     href={data.button_secondary_link || '#services'}
-                                    className="inline-flex items-center gap-2 rounded-full border border-[#ead8c0]/70 bg-[#fffdf8]/75 px-7 py-3.5 text-sm font-semibold text-gray-700 shadow-[0_14px_38px_rgba(120,72,38,0.08)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/20 hover:shadow-[0_18px_48px_rgba(120,72,38,0.12)] dark:border-white/10 dark:bg-white/[0.04] dark:text-white/80 dark:hover:border-white/20"
+                                    className="inline-flex items-center gap-2 rounded-full border border-gray-200 bg-white/85 px-7 py-3.5 text-sm font-semibold text-gray-700 shadow-sm backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-gray-300 hover:shadow-md dark:border-white/10 dark:bg-white/[0.04] dark:text-white/80 dark:hover:border-white/20"
                                 >
                                     {data.button_secondary_text || t('hero.cta_secondary')}
                                 </a>
@@ -153,19 +147,19 @@ export default function HeroSection({ data }: HeroSectionProps) {
                             }}
                         >
                             <motion.div
-                                className="pointer-events-none absolute inset-x-8 bottom-2 h-24 rounded-full bg-primary/15 blur-3xl dark:bg-primary/20"
+                                className="pointer-events-none absolute inset-x-10 bottom-3 h-16 rounded-full bg-black/[0.06] blur-2xl dark:bg-primary/20"
                                 animate={{ scale: [1, 1.08, 1], opacity: [0.55, 0.8, 0.55] }}
                                 transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
                             />
                             <motion.div
-                                className="pointer-events-none absolute right-4 top-8 h-36 w-36 rounded-full bg-amber-200/30 blur-3xl dark:bg-amber-300/10"
+                                className="pointer-events-none absolute right-8 top-10 h-28 w-28 rounded-full bg-transparent dark:bg-amber-300/10 dark:blur-3xl"
                                 animate={{ x: [0, 10, 0], y: [0, -8, 0] }}
                                 transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
                             />
                             <img
                                 src={heroImage}
                                 alt="Hibiscus Efsya"
-                                className="relative z-10 mx-auto w-full object-contain drop-shadow-[0_35px_65px_rgba(15,23,42,0.18)] dark:drop-shadow-[0_35px_70px_rgba(0,0,0,0.55)]"
+                                className="relative z-10 mx-auto w-full object-contain drop-shadow-[0_22px_32px_rgba(15,23,42,0.12)] dark:drop-shadow-[0_35px_70px_rgba(0,0,0,0.55)]"
                             />
                         </motion.div>
                     </motion.div>

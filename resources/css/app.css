@@ -18,7 +18,7 @@
     body {
         overflow-x: hidden;
         @apply text-gray-900;
-        background: #fff8f1;
+        background: #faf7f2;
         transition: background-color 0.3s ease, color 0.3s ease;
     }
     .dark body, body.dark {
@@ -31,13 +31,13 @@
     /* ---- CARDS ---- */
     .glass-card {
         @apply relative overflow-hidden rounded-2xl transition-shadow duration-300;
-        background: rgba(255, 253, 248, 0.78);
-        border: 1px solid rgba(234, 216, 192, 0.72);
-        box-shadow: 0 18px 55px rgba(120, 72, 38, 0.08);
-        backdrop-filter: blur(18px);
+        background: rgba(255, 255, 255, 0.82);
+        border: 1px solid rgba(229, 231, 235, 0.95);
+        box-shadow: 0 8px 24px rgba(15, 23, 42, 0.05);
+        backdrop-filter: blur(12px);
     }
     .glass-card:hover {
-        box-shadow: 0 24px 70px rgba(120, 72, 38, 0.12);
+        box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
     }
     .dark .glass-card {
         @apply bg-[#171717] border-white/10;
@@ -91,11 +91,10 @@
     /* ---- MISC ---- */
     .badge-pill {
         @apply inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-sm font-medium;
-        background: rgba(255, 253, 248, 0.72);
-        border: 1px solid rgba(229, 26, 26, 0.18);
-        box-shadow: 0 12px 36px rgba(120, 72, 38, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.75);
+        background: rgba(255, 255, 255, 0.82);
+        border: 1px solid rgba(229, 26, 26, 0.16);
         color: #E51A1A;
-        backdrop-filter: blur(14px);
+        backdrop-filter: blur(10px);
     }
     .dark .badge-pill {
         background: rgba(229, 26, 26, 0.12);
@@ -117,16 +116,16 @@
     }
 
     .luxury-badge {
-        box-shadow: 0 14px 42px rgba(120, 72, 38, 0.10), inset 0 1px 0 rgba(255,255,255,0.7);
-        backdrop-filter: blur(14px);
+        box-shadow: none;
+        backdrop-filter: blur(10px);
     }
 
     .luxury-depth-card,
     .luxury-mini-card,
     .luxury-service-card {
-        border-color: rgba(234, 216, 192, 0.72) !important;
-        background-color: rgba(255, 253, 248, 0.78) !important;
-        box-shadow: 0 26px 78px rgba(120, 72, 38, 0.11) !important;
+        border-color: rgba(229, 231, 235, 0.95) !important;
+        background-color: rgba(255, 255, 255, 0.86) !important;
+        box-shadow: 0 10px 28px rgba(15, 23, 42, 0.06) !important;
         transform-style: preserve-3d;
         will-change: transform;
     }
