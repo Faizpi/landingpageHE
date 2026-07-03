@@ -8,7 +8,6 @@ export interface HeroContent {
     button_primary_link: string | null;
     button_secondary_text: string | null;
     button_secondary_link: string | null;
-    hero_image: string | null;
     stat_1_value: string | null;
     stat_1_label: string | null;
     stat_2_value: string | null;

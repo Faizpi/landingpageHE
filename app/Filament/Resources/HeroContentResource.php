@@ -7,7 +7,6 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\HeroContentResource\Pages;
 use App\Models\HeroContent;
 use BackedEnum;
-use Filament\Forms\Components\FileUpload;
 use Filament\Schemas\Components\Grid;
 use Filament\Schemas\Components\Section;
 use Filament\Forms\Components\TextInput;
@@ -69,15 +68,6 @@ class HeroContentResource extends Resource
                         ->label('Secondary Button Link')
                         ->maxLength(255),
                 ]),
-            ]),
-
-            Section::make('Hero Image')->schema([
-                FileUpload::make('hero_image')
-                    ->label('Hero Image')
-                    ->image()
-                    ->disk('public')
-                    ->directory('images')
-                    ->maxSize(2048),
             ]),
 
             Section::make('Statistics')->schema([

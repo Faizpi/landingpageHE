@@ -9,6 +9,10 @@ use Illuminate\Database\Eloquent\Builder;
 
 class HeroContent extends Model
 {
+    protected $hidden = [
+        'hero_image',
+    ];
+
     protected $fillable = [
         'badge_text',
         'title',
@@ -19,7 +23,6 @@ class HeroContent extends Model
         'button_primary_link',
         'button_secondary_text',
         'button_secondary_link',
-        'hero_image',
         'stat_1_value',
         'stat_1_label',
         'stat_2_value',

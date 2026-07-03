@@ -1,15 +1,6 @@
-import {
-    motion,
-    useReducedMotion,
-    useScroll,
-    useSpring,
-    useTransform,
-    useVelocity,
-} from 'framer-motion';
-import { HeroArrowRight, HeroMousePointer, HeroCheckCircle } from './HeroIcons';
+import { motion } from 'framer-motion';
+import { HeroArrowRight, HeroMousePointer } from './HeroIcons';
 import type { HeroContent } from '@/types';
-import FloatingElement from './FloatingElement';
-import logoImg from '../../images/hibiscusefsya1.png';
 import { useTranslation } from '../../lib/i18n';
 
 interface HeroSectionProps {
@@ -38,25 +29,7 @@ const itemVariants = {
 
 export default function HeroSection({ data }: HeroSectionProps) {
     const { t } = useTranslation();
-    const reduceMotion = useReducedMotion() ?? false;
-    const { scrollY } = useScroll();
-    const scrollVelocity = useVelocity(scrollY);
-    const smoothVelocity = useSpring(scrollVelocity, {
-        damping: 48,
-        stiffness: 360,
-        mass: 0.4,
-    });
-
-    const heroImageY = useTransform(scrollY, [0, 720], reduceMotion ? [0, 0] : [0, -52]);
-    const heroImageScale = useTransform(scrollY, [0, 720], reduceMotion ? [1, 1] : [1, 0.96]);
-    const heroRotateX = useTransform(smoothVelocity, [-1400, 0, 1400], reduceMotion ? [0, 0, 0] : [-3, 0, 3]);
-    const heroRotateY = useTransform(smoothVelocity, [-1400, 0, 1400], reduceMotion ? [0, 0, 0] : [4, 0, -4]);
-    const heroAccentY = useTransform(scrollY, [0, 720], reduceMotion ? [0, 0] : [0, -86]);
-    const heroAccentRotate = useTransform(smoothVelocity, [-1400, 0, 1400], reduceMotion ? [0, 0, 0] : [-5, 0, 5]);
-
-    const heroImage = data.hero_image
-        ? `/storage/${data.hero_image}`
-        : logoImg;
+    const heroImage = '/hibiscusefsya.png';
 
     const stats = [
         { value: data.stat_1_value, label: data.stat_1_label },
@@ -67,15 +40,12 @@ export default function HeroSection({ data }: HeroSectionProps) {
     return (
         <section
             id="hero"
-            className="luxury-section relative isolate flex min-h-screen items-center overflow-hidden bg-white pt-24 pb-16 dark:bg-[#0a0a0a]"
+            className="relative flex min-h-screen items-center overflow-hidden bg-white pt-24 pb-16 dark:bg-[#0a0a0a]"
         >
-            {/* Atmospheric luxury depth */}
-            <div className="pointer-events-none absolute inset-0 -z-10">
-                <div className="luxury-noise" />
-                <div className="absolute -top-28 left-1/2 h-[34rem] w-[70rem] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(229,26,26,0.12),rgba(251,191,36,0.07)_34%,transparent_68%)] blur-3xl" />
-                <div className="absolute right-[-12rem] top-1/3 h-[28rem] w-[28rem] rounded-full bg-[radial-gradient(circle,rgba(251,191,36,0.13),transparent_65%)] blur-3xl" />
-                <div className="absolute bottom-[-14rem] left-[-8rem] h-[30rem] w-[30rem] rounded-full bg-[radial-gradient(circle,rgba(229,26,26,0.09),transparent_66%)] blur-3xl" />
-                <div className="absolute inset-x-6 bottom-0 hidden h-px bg-gradient-to-r from-transparent via-primary/25 to-transparent lg:block" />
+            {/* Subtle background accents */}
+            <div className="pointer-events-none absolute inset-0">
+                <div className="absolute top-0 left-1/2 h-[400px] w-[800px] -translate-x-1/2 rounded-full bg-primary/[0.04] blur-[100px]" />
+                <div className="absolute right-[-10rem] top-1/3 h-[24rem] w-[24rem] rounded-full bg-amber-200/20 blur-3xl dark:bg-amber-300/5" />
             </div>
 
             <div className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -83,14 +53,14 @@ export default function HeroSection({ data }: HeroSectionProps) {
                     variants={containerVariants}
                     initial="hidden"
                     animate="visible"
-                    className="grid items-center gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:gap-20"
+                    className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20"
                 >
                     {/* Left Column - Content */}
                     <div className="space-y-8">
                         {/* Badge */}
                         {data.badge_text && (
                             <motion.div variants={itemVariants}>
-                                <span className="badge-pill luxury-badge">
+                                <span className="badge-pill">
                                     <span className="h-2 w-2 rounded-full bg-primary animate-pulse-glow" />
                                     {data.badge_text}
                                 </span>
@@ -148,10 +118,10 @@ export default function HeroSection({ data }: HeroSectionProps) {
                         {stats.length > 0 && (
                             <motion.div
                                 variants={itemVariants}
-                                className="luxury-stats flex flex-wrap gap-4 border-t border-gray-100 pt-8 dark:border-white/10 sm:gap-5"
+                                className="flex gap-8 border-t border-gray-100 pt-8 dark:border-white/10"
                             >
                                 {stats.map((stat, i) => (
-                                    <div key={i} className="min-w-[8.25rem] rounded-2xl border border-white/70 bg-white/70 px-5 py-4 text-left shadow-[0_18px_45px_rgba(15,23,42,0.06)] backdrop-blur-xl dark:border-white/10 dark:bg-white/[0.04] dark:shadow-black/30">
+                                    <div key={i} className="text-center">
                                         <div className="text-2xl font-bold text-gray-900 dark:text-white sm:text-3xl">
                                             {stat.value}
                                         </div>
@@ -164,63 +134,20 @@ export default function HeroSection({ data }: HeroSectionProps) {
                         )}
                     </div>
 
-                    {/* Right Column - Hero Image */}
+                    {/* Right Column - Static 3D Logo */}
                     <motion.div
                         variants={itemVariants}
-                        className="relative flex items-center justify-center [perspective:1400px] lg:justify-end"
+                        className="relative flex items-center justify-center lg:justify-end"
                     >
-                        <motion.div
-                            className="luxury-velocity-layer relative w-full max-w-md sm:max-w-lg lg:max-w-xl"
-                            style={{
-                                y: heroImageY,
-                                scale: heroImageScale,
-                                rotateX: heroRotateX,
-                                rotateY: heroRotateY,
-                            }}
-                        >
-                            <motion.div
-                                className="pointer-events-none absolute -right-7 -top-8 hidden h-36 w-48 rounded-[2rem] border border-amber-200/60 bg-gradient-to-br from-amber-100/70 via-white/40 to-transparent shadow-[0_28px_75px_rgba(251,191,36,0.18)] backdrop-blur-2xl lg:block"
-                                style={{ y: heroAccentY, rotate: heroAccentRotate }}
+                        <div className="relative w-full max-w-sm sm:max-w-md lg:max-w-lg">
+                            <div className="pointer-events-none absolute inset-x-8 bottom-2 h-24 rounded-full bg-primary/15 blur-3xl dark:bg-primary/20" />
+                            <div className="pointer-events-none absolute right-4 top-8 h-36 w-36 rounded-full bg-amber-200/30 blur-3xl dark:bg-amber-300/10" />
+                            <img
+                                src={heroImage}
+                                alt="Hibiscus Efsya"
+                                className="relative z-10 mx-auto w-full object-contain drop-shadow-[0_35px_65px_rgba(15,23,42,0.18)] dark:drop-shadow-[0_35px_70px_rgba(0,0,0,0.55)]"
                             />
-                            <div className="pointer-events-none absolute -left-8 bottom-10 hidden h-44 w-36 rounded-[2rem] border border-primary/15 bg-primary/[0.06] shadow-[0_30px_80px_rgba(229,26,26,0.12)] backdrop-blur-2xl lg:block" />
-                            <div className="absolute -inset-4 rounded-[2.25rem] bg-gradient-to-br from-primary/12 via-amber-200/15 to-transparent blur-2xl" />
-
-                            <div className="luxury-depth-card relative overflow-hidden rounded-[2rem] border border-white/80 bg-white/80 p-3 shadow-[0_35px_100px_rgba(15,23,42,0.16)] backdrop-blur-2xl dark:border-white/10 dark:bg-[#111]/80 dark:shadow-black/60 sm:p-4">
-                                <div className="pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-white to-transparent opacity-80" />
-                                <div className="relative overflow-hidden rounded-[1.5rem] bg-gray-100 dark:bg-white/5">
-                                    <img
-                                        src={heroImage}
-                                        alt="Hibiscus Efsya"
-                                        className="aspect-[4/5] w-full object-cover sm:aspect-[5/4] lg:aspect-[4/5]"
-                                    />
-                                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-white/10 mix-blend-multiply dark:from-black/55" />
-                                    <div className="pointer-events-none absolute left-5 top-5 rounded-full border border-white/35 bg-white/15 px-4 py-1.5 text-xs font-medium uppercase tracking-[0.28em] text-white shadow-lg backdrop-blur-md">
-                                        Premium Studio
-                                    </div>
-                                </div>
-
-                                {/* Floating satisfaction card */}
-                                <FloatingElement
-                                    className="absolute -bottom-4 -left-3 z-20 sm:-bottom-6 sm:-left-6"
-                                    distance={12}
-                                    duration={5}
-                                >
-                                    <div className="flex items-center gap-3 rounded-2xl border border-white/80 bg-white/90 px-5 py-4 shadow-[0_22px_60px_rgba(15,23,42,0.14)] backdrop-blur-xl dark:border-white/10 dark:bg-[#161616]/90 dark:shadow-black/40">
-                                        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-green-50 dark:bg-green-500/10">
-                                            <HeroCheckCircle className="h-5 w-5 text-green-600 dark:text-green-400" />
-                                        </div>
-                                        <div className="min-w-0">
-                                            <p className="text-sm font-semibold text-gray-900 dark:text-white">
-                                                {t('hero.trusted')}
-                                            </p>
-                                            <p className="text-xs text-gray-400 dark:text-white/40">
-                                                {t('hero.since')}
-                                            </p>
-                                        </div>
-                                    </div>
-                                </FloatingElement>
-                            </div>
-                        </motion.div>
+                        </div>
                     </motion.div>
                 </motion.div>
             </div>
