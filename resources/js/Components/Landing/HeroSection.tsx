@@ -1,4 +1,10 @@
-import { motion } from 'framer-motion';
+import {
+    motion,
+    useMotionValue,
+    useReducedMotion,
+    useSpring,
+} from 'framer-motion';
+import { useRef, type PointerEvent } from 'react';
 import { HeroArrowRight, HeroMousePointer } from './HeroIcons';
 import type { HeroContent } from '@/types';
 import { useTranslation } from '../../lib/i18n';
@@ -27,15 +33,55 @@ const itemVariants = {
     },
 };
 
+const HERO_TILT_BOUNDS = {
+    rotateX: 12,
+    rotateY: 16,
+};
+
+const heroTiltSpring = {
+    stiffness: 260,
+    damping: 28,
+    mass: 0.55,
+};
+
 export default function HeroSection({ data }: HeroSectionProps) {
     const { t } = useTranslation();
+    const reduceMotion = useReducedMotion() ?? false;
+    const heroCardRef = useRef<HTMLDivElement>(null);
     const heroImage = '/hibiscusefsya.png';
+    const rotateX = useMotionValue(0);
+    const rotateY = useMotionValue(0);
+    const springRotateX = useSpring(rotateX, heroTiltSpring);
+    const springRotateY = useSpring(rotateY, heroTiltSpring);
 
     const stats = [
         { value: data.stat_1_value, label: data.stat_1_label },
         { value: data.stat_2_value, label: data.stat_2_label },
         { value: data.stat_3_value, label: data.stat_3_label },
     ].filter((s) => s.value && s.label);
+
+    const resetHeroTilt = () => {
+        rotateX.set(0);
+        rotateY.set(0);
+    };
+
+    const handleHeroPointerMove = (event: PointerEvent<HTMLDivElement>) => {
+        if (reduceMotion) {
+            return;
+        }
+
+        const bounds = heroCardRef.current?.getBoundingClientRect();
+
+        if (!bounds) {
+            return;
+        }
+
+        const horizontalProgress = (event.clientX - bounds.left) / bounds.width - 0.5;
+        const verticalProgress = (event.clientY - bounds.top) / bounds.height - 0.5;
+
+        rotateX.set(verticalProgress * -HERO_TILT_BOUNDS.rotateX);
+        rotateY.set(horizontalProgress * HERO_TILT_BOUNDS.rotateY);
+    };
 
     return (
         <section
@@ -128,39 +174,58 @@ export default function HeroSection({ data }: HeroSectionProps) {
                         )}
                     </div>
 
-                    {/* Right Column - Static 3D Logo */}
+                    {/* Right Column - Interactive 3D Logo */}
                     <motion.div
                         variants={itemVariants}
                         className="relative flex items-center justify-center lg:justify-end"
                     >
                         <motion.div
-                            className="relative w-full max-w-sm [transform-style:preserve-3d] sm:max-w-md lg:max-w-lg"
-                            animate={{
-                                y: [0, -14, 0],
-                                rotateX: [0, 3, 0, -2, 0],
-                                rotateY: [0, -4, 0, 4, 0],
-                            }}
+                            animate={
+                                reduceMotion
+                                    ? { y: 0 }
+                                    : {
+                                        y: [0, -14, 0],
+                                        rotateX: [0, 2.2, 0, -1.4, 0],
+                                        rotateY: [0, -3, 0, 3, 0],
+                                    }
+                            }
                             transition={{
                                 duration: 7,
-                                repeat: Infinity,
+                                repeat: reduceMotion ? 0 : Infinity,
                                 ease: 'easeInOut',
                             }}
+                            className="relative w-full max-w-sm [perspective:1200px] sm:max-w-md lg:max-w-lg"
                         >
                             <motion.div
-                                className="pointer-events-none absolute inset-x-10 bottom-3 h-16 rounded-full bg-black/[0.06] blur-2xl dark:bg-primary/20"
-                                animate={{ scale: [1, 1.08, 1], opacity: [0.55, 0.8, 0.55] }}
-                                transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
-                            />
-                            <motion.div
-                                className="pointer-events-none absolute right-8 top-10 h-28 w-28 rounded-full bg-transparent dark:bg-amber-300/10 dark:blur-3xl"
-                                animate={{ x: [0, 10, 0], y: [0, -8, 0] }}
-                                transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-                            />
-                            <img
-                                src={heroImage}
-                                alt="Hibiscus Efsya"
-                                className="relative z-10 mx-auto w-full object-contain drop-shadow-[0_22px_32px_rgba(15,23,42,0.12)] dark:drop-shadow-[0_35px_70px_rgba(0,0,0,0.55)]"
-                            />
+                                ref={heroCardRef}
+                                className="group relative cursor-grab touch-pan-y select-none [transform-style:preserve-3d] active:cursor-grabbing"
+                                style={{
+                                    rotateX: springRotateX,
+                                    rotateY: springRotateY,
+                                }}
+                                onPointerMove={handleHeroPointerMove}
+                                onPointerLeave={resetHeroTilt}
+                                onPointerUp={resetHeroTilt}
+                                onPointerCancel={resetHeroTilt}
+                            >
+                                <motion.div
+                                    className="pointer-events-none absolute inset-x-10 bottom-3 h-16 rounded-full bg-black/[0.06] blur-2xl transition-opacity duration-300 group-hover:opacity-90 dark:bg-primary/20"
+                                    animate={{ scale: [1, 1.08, 1], opacity: [0.55, 0.8, 0.55] }}
+                                    transition={{ duration: 7, repeat: reduceMotion ? 0 : Infinity, ease: 'easeInOut' }}
+                                />
+                                <motion.div
+                                    className="pointer-events-none absolute right-8 top-10 h-28 w-28 rounded-full bg-transparent dark:bg-amber-300/10 dark:blur-3xl"
+                                    animate={reduceMotion ? { x: 0, y: 0 } : { x: [0, 10, 0], y: [0, -8, 0] }}
+                                    transition={{ duration: 8, repeat: reduceMotion ? 0 : Infinity, ease: 'easeInOut' }}
+                                />
+                                <motion.img
+                                    src={heroImage}
+                                    alt="Hibiscus Efsya"
+                                    draggable={false}
+                                    className="relative z-10 mx-auto w-full object-contain drop-shadow-[0_22px_32px_rgba(15,23,42,0.12)] transition-[filter] duration-300 [transform:translateZ(28px)] group-hover:drop-shadow-[0_30px_45px_rgba(15,23,42,0.16)] dark:drop-shadow-[0_35px_70px_rgba(0,0,0,0.55)] dark:group-hover:drop-shadow-[0_42px_82px_rgba(0,0,0,0.66)]"
+                                />
+                                <div className="pointer-events-none absolute inset-x-12 top-8 h-px bg-gradient-to-r from-transparent via-white/70 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 dark:via-white/25" />
+                            </motion.div>
                         </motion.div>
                     </motion.div>
                 </motion.div>
