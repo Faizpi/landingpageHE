@@ -70,7 +70,7 @@ export default function ServicesSection({ categories }: ServicesSectionProps) {
                                 className={`relative flex min-h-11 items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition-all duration-300 ${
                                     activeTab === index
                                         ? 'bg-primary text-white shadow-[0_16px_45px_rgba(229,26,26,0.24)]'
-                                        : 'border border-gray-200/80 bg-white/85 text-gray-600 shadow-sm backdrop-blur-xl hover:border-primary/20 hover:text-gray-900 hover:shadow-md dark:border-white/10 dark:bg-white/[0.04] dark:text-white/60 dark:hover:border-white/20 dark:hover:text-white'
+                                        : 'border border-gray-200/80 bg-white/[0.85] text-gray-600 shadow-sm backdrop-blur-xl hover:border-primary/20 hover:text-gray-900 hover:shadow-md dark:border-white/10 dark:bg-white/[0.04] dark:text-white/60 dark:hover:border-white/20 dark:hover:text-white'
                                 }`}
                             >
                                 {category.icon && <span>{category.icon}</span>}
@@ -105,7 +105,7 @@ export default function ServicesSection({ categories }: ServicesSectionProps) {
                                     transition={{ delay: i * 0.1, duration: 0.4 }}
                                     className={`relative ${depthClass}`}
                                 >
-                                    <div className="group luxury-service-card relative h-full overflow-hidden rounded-[1.7rem] border border-white/75 bg-white/88 shadow-[0_22px_70px_rgba(15,23,42,0.09)] backdrop-blur-2xl transition-all duration-500 hover:-translate-y-2 hover:border-primary/20 hover:shadow-[0_34px_90px_rgba(15,23,42,0.15)] dark:border-white/10 dark:bg-white/[0.045] dark:shadow-black/35 dark:hover:border-white/20">
+                                    <div className="group luxury-service-card relative h-full overflow-hidden rounded-[1.7rem] border border-white/75 bg-white/[0.88] shadow-[0_22px_70px_rgba(15,23,42,0.09)] backdrop-blur-2xl transition-all duration-500 hover:-translate-y-2 hover:border-primary/20 hover:shadow-[0_34px_90px_rgba(15,23,42,0.15)] dark:border-white/10 dark:bg-white/[0.045] dark:shadow-black/35 dark:hover:border-white/20">
                                         <div className="pointer-events-none absolute inset-x-5 top-0 z-10 h-px bg-gradient-to-r from-transparent via-white to-transparent opacity-80" />
                                         <div className="pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full bg-primary/[0.08] blur-2xl transition-opacity duration-500 group-hover:opacity-100" />
 
@@ -118,7 +118,7 @@ export default function ServicesSection({ categories }: ServicesSectionProps) {
                                                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                                                 />
                                             ) : (
-                                                <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-primary/8 via-amber-100/30 to-transparent dark:from-primary/12 dark:via-amber-200/10">
+                                                <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-primary/[0.08] via-amber-100/30 to-transparent dark:from-primary/[0.12] dark:via-amber-200/[0.1]">
                                                     <span className="text-4xl">
                                                         {activeCategory.icon || '🚀'}
                                                     </span>
@@ -128,7 +128,7 @@ export default function ServicesSection({ categories }: ServicesSectionProps) {
 
                                             {/* Coming Soon Badge */}
                                             {service.is_coming_soon && (
-                                                <div className="absolute top-3 right-3 flex items-center gap-1 rounded-full bg-amber-100/95 px-3 py-1 text-xs font-medium text-amber-700 shadow-sm backdrop-blur-md dark:bg-amber-500/20 dark:text-amber-300">
+                                                <div className="absolute top-3 right-3 flex items-center gap-1 rounded-full bg-amber-100/[0.95] px-3 py-1 text-xs font-medium text-amber-700 shadow-sm backdrop-blur-md dark:bg-amber-500/20 dark:text-amber-300">
                                                     <HeroClock className="h-3 w-3" />
                                                     {t('services.coming_soon')}
                                                 </div>

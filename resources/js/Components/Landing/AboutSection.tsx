@@ -116,7 +116,7 @@ export default function AboutSection({ data }: AboutSectionProps) {
                                     Curated digital presence
                                 </motion.div>
                                 <motion.div
-                                    className="pointer-events-none absolute -right-3 bottom-16 hidden rounded-2xl border border-primary/15 bg-white/85 px-5 py-4 text-sm font-semibold text-primary shadow-[0_22px_65px_rgba(229,26,26,0.13)] backdrop-blur-xl dark:bg-white/[0.06] sm:block"
+                                    className="pointer-events-none absolute -right-3 bottom-16 hidden rounded-2xl border border-primary/15 bg-white/[0.85] px-5 py-4 text-sm font-semibold text-primary shadow-[0_22px_65px_rgba(229,26,26,0.13)] backdrop-blur-xl dark:bg-white/[0.06] sm:block"
                                     style={{ y: cardCounterDrift }}
                                 >
                                     Signature brand detail
@@ -124,7 +124,7 @@ export default function AboutSection({ data }: AboutSectionProps) {
 
                                 {/* Central logo card */}
                                 <FloatingElement distance={15} duration={7}>
-                                    <div className="luxury-depth-card relative z-10 flex h-56 w-56 flex-col items-center justify-center rounded-[2rem] border border-white/80 bg-white/85 p-6 text-center shadow-[0_35px_90px_rgba(15,23,42,0.13)] backdrop-blur-2xl dark:border-white/10 dark:bg-[#111]/85 dark:shadow-black/50">
+                                    <div className="luxury-depth-card relative z-10 flex h-56 w-56 flex-col items-center justify-center rounded-[2rem] border border-white/80 bg-white/[0.85] p-6 text-center shadow-[0_35px_90px_rgba(15,23,42,0.13)] backdrop-blur-2xl dark:border-white/10 dark:bg-[#111]/85 dark:shadow-black/50">
                                         <div className="pointer-events-none absolute inset-3 rounded-[1.6rem] border border-primary/10" />
                                         {aboutImage ? (
                                             <img
