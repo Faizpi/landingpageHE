@@ -93,8 +93,9 @@ export default function ServicesSection({ categories }: ServicesSectionProps) {
                     >
                         {activeCategory.services.map((service, i) => {
                             const isFeatured = i % 3 === 1;
-                            const yOffset = !reduceMotion && isFeatured ? '-1.25rem' : '0rem';
-                            const rotateZ = !reduceMotion ? (i % 3 === 0 ? '-0.8deg' : i % 3 === 2 ? '0.8deg' : '0deg') : '0deg';
+                            const depthClass = !reduceMotion
+                                ? `${isFeatured ? 'lg:-translate-y-5' : ''} ${i % 3 === 0 ? 'lg:-rotate-[0.8deg]' : i % 3 === 2 ? 'lg:rotate-[0.8deg]' : ''}`
+                                : '';
 
                             return (
                                 <motion.div
@@ -102,8 +103,7 @@ export default function ServicesSection({ categories }: ServicesSectionProps) {
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: i * 0.1, duration: 0.4 }}
-                                    className="relative"
-                                    style={{ transform: `translateY(${yOffset}) rotate(${rotateZ})` }}
+                                    className={`relative ${depthClass}`}
                                 >
                                     <div className="group luxury-service-card relative h-full overflow-hidden rounded-[1.7rem] border border-white/75 bg-white/88 shadow-[0_22px_70px_rgba(15,23,42,0.09)] backdrop-blur-2xl transition-all duration-500 hover:-translate-y-2 hover:border-primary/20 hover:shadow-[0_34px_90px_rgba(15,23,42,0.15)] dark:border-white/10 dark:bg-white/[0.045] dark:shadow-black/35 dark:hover:border-white/20">
                                         <div className="pointer-events-none absolute inset-x-5 top-0 z-10 h-px bg-gradient-to-r from-transparent via-white to-transparent opacity-80" />
