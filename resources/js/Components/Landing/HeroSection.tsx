@@ -40,7 +40,7 @@ export default function HeroSection({ data }: HeroSectionProps) {
     return (
         <section
             id="hero"
-            className="relative flex min-h-screen items-center overflow-hidden bg-white pt-24 pb-16 dark:bg-[#0a0a0a]"
+            className="relative flex min-h-screen items-center overflow-hidden bg-[#fff8f1] pt-24 pb-16 dark:bg-[#0a0a0a]"
         >
             {/* Subtle background accents */}
             <div className="pointer-events-none absolute inset-0">
@@ -107,7 +107,7 @@ export default function HeroSection({ data }: HeroSectionProps) {
                             {data.button_secondary_text && (
                                 <a
                                     href={data.button_secondary_link || '#services'}
-                                    className="inline-flex items-center gap-2 rounded-full border border-gray-200/80 bg-white/80 px-7 py-3.5 text-sm font-semibold text-gray-700 shadow-sm backdrop-blur-xl transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/20 hover:shadow-md dark:border-white/10 dark:bg-white/[0.04] dark:text-white/80 dark:hover:border-white/20"
+                                    className="inline-flex items-center gap-2 rounded-full border border-[#ead8c0]/70 bg-[#fffdf8]/75 px-7 py-3.5 text-sm font-semibold text-gray-700 shadow-[0_14px_38px_rgba(120,72,38,0.08)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/20 hover:shadow-[0_18px_48px_rgba(120,72,38,0.12)] dark:border-white/10 dark:bg-white/[0.04] dark:text-white/80 dark:hover:border-white/20"
                                 >
                                     {data.button_secondary_text || t('hero.cta_secondary')}
                                 </a>

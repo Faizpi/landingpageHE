@@ -33,7 +33,7 @@ export default function AboutSection({ data }: AboutSectionProps) {
     const aboutImage = data.image ? `/storage/${data.image}` : null;
 
     return (
-        <section id="about" className="luxury-section luxury-overlap-top relative isolate overflow-hidden bg-white py-24 lg:py-32 dark:bg-[#0a0a0a]">
+        <section id="about" className="luxury-section luxury-overlap-top relative isolate overflow-hidden bg-[#fffdf8] py-24 lg:py-32 dark:bg-[#0a0a0a]">
             <div className="pointer-events-none absolute inset-0 -z-10">
                 <div className="absolute left-1/2 top-0 h-[22rem] w-[70rem] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(229,26,26,0.07),transparent_68%)] blur-3xl" />
                 <div className="absolute right-[-16rem] bottom-8 h-[26rem] w-[26rem] rounded-full bg-[radial-gradient(circle,rgba(251,191,36,0.13),transparent_66%)] blur-3xl" />
@@ -139,7 +139,7 @@ export default function AboutSection({ data }: AboutSectionProps) {
                                     {data.stats.map((stat, i) => (
                                         <div
                                             key={i}
-                                            className="rounded-[1.35rem] border border-white/70 bg-white/80 p-5 text-center shadow-[0_18px_50px_rgba(15,23,42,0.06)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-primary/20 hover:shadow-[0_24px_65px_rgba(15,23,42,0.10)] dark:border-white/10 dark:bg-white/[0.04] dark:shadow-black/30 dark:hover:border-white/15"
+                                            className="rounded-[1.35rem] border border-[#ead8c0]/70 bg-[#fffdf8]/75 p-5 text-center shadow-[0_18px_55px_rgba(120,72,38,0.09)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-primary/20 hover:shadow-[0_24px_70px_rgba(120,72,38,0.13)] dark:border-white/10 dark:bg-white/[0.04] dark:shadow-black/30 dark:hover:border-white/15"
                                         >
                                             <div className="text-2xl font-bold text-primary sm:text-3xl">
                                                 {stat.value}

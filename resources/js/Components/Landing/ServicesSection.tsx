@@ -38,7 +38,7 @@ export default function ServicesSection({ categories }: ServicesSectionProps) {
     const activeCategory = categories[activeTab];
 
     return (
-        <section id="services" className="luxury-section luxury-overlap-top relative isolate overflow-hidden bg-gray-50/60 py-24 dark:bg-[#0c0c0c] lg:py-32">
+        <section id="services" className="luxury-section luxury-overlap-top relative isolate overflow-hidden bg-[#fff4e8] py-24 dark:bg-[#0c0c0c] lg:py-32">
             <div className="pointer-events-none absolute inset-0 -z-10">
                 <div className="luxury-noise opacity-50" />
                 <div className="absolute left-[-12rem] top-28 h-[30rem] w-[30rem] rounded-full bg-[radial-gradient(circle,rgba(229,26,26,0.09),transparent_65%)] blur-3xl" />

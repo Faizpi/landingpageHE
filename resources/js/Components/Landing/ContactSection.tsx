@@ -48,7 +48,7 @@ export default function ContactSection({ data }: ContactSectionProps) {
     ];
 
     return (
-        <section id="contact" className="luxury-section luxury-overlap-top relative isolate overflow-hidden py-24 lg:py-32">
+        <section id="contact" className="luxury-section luxury-overlap-top relative isolate overflow-hidden bg-[#fff8f1] py-24 lg:py-32 dark:bg-[#0a0a0a]">
             <div className="pointer-events-none absolute inset-0 -z-10">
                 <div className="absolute left-1/2 top-10 h-[28rem] w-[58rem] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(229,26,26,0.08),rgba(251,191,36,0.08)_34%,transparent_70%)] blur-3xl" />
                 <div className="absolute inset-x-8 top-0 hidden h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent lg:block" />
@@ -217,7 +217,7 @@ export default function ContactSection({ data }: ContactSectionProps) {
                             {contactItems.map((item, i) => (
                                 <div
                                     key={i}
-                                    className="group flex items-start gap-4 rounded-[1.45rem] border border-white/75 bg-white/[0.85] p-5 shadow-[0_18px_55px_rgba(15,23,42,0.07)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-primary/20 hover:shadow-[0_24px_70px_rgba(15,23,42,0.11)] dark:border-white/10 dark:bg-white/[0.04] dark:shadow-black/30"
+                                    className="group flex items-start gap-4 rounded-[1.45rem] border border-[#ead8c0]/70 bg-[#fffdf8]/75 p-5 shadow-[0_18px_55px_rgba(120,72,38,0.09)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-primary/20 hover:shadow-[0_24px_70px_rgba(120,72,38,0.13)] dark:border-white/10 dark:bg-white/[0.04] dark:shadow-black/30"
                                 >
                                     <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary/10 shadow-inner transition-transform duration-300 group-hover:scale-105">
                                         <item.icon className="h-5 w-5 text-primary" />
@@ -245,7 +245,7 @@ export default function ContactSection({ data }: ContactSectionProps) {
                                 href={data.social_links?.whatsapp || '#'}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="group flex items-center justify-center gap-3 rounded-[1.45rem] border border-green-500/20 bg-gradient-to-br from-white/[0.95] to-green-50/[0.8] p-5 shadow-[0_20px_65px_rgba(34,197,94,0.13)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-green-500/35 hover:shadow-[0_28px_80px_rgba(34,197,94,0.18)] dark:border-green-400/20 dark:from-white/[0.06] dark:to-green-500/[0.08]"
+                                className="group flex items-center justify-center gap-3 rounded-[1.45rem] border border-green-500/20 bg-gradient-to-br from-[#fffdf8]/90 to-green-50/80 p-5 shadow-[0_20px_65px_rgba(120,72,38,0.10)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-green-500/35 hover:shadow-[0_28px_80px_rgba(34,197,94,0.16)] dark:border-green-400/20 dark:from-white/[0.06] dark:to-green-500/[0.08]"
                             >
                                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-green-500/10 transition-transform duration-300 group-hover:scale-105">
                                     <HeroChatBubble className="h-6 w-6 text-green-500" />
