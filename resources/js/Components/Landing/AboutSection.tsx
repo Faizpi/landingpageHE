@@ -109,18 +109,6 @@ export default function AboutSection({ data }: AboutSectionProps) {
                                 />
                                 <div className="pointer-events-none absolute h-52 w-52 rounded-full bg-primary/[0.06] blur-2xl" />
 
-                                <motion.div
-                                    className="pointer-events-none absolute left-0 top-12 hidden rounded-2xl border border-amber-200/60 bg-white/80 px-5 py-4 text-sm font-semibold text-gray-800 shadow-[0_22px_65px_rgba(251,191,36,0.16)] backdrop-blur-xl dark:border-amber-200/20 dark:bg-white/[0.06] dark:text-white/80 sm:block"
-                                    style={{ y: cardDrift }}
-                                >
-                                    Curated digital presence
-                                </motion.div>
-                                <motion.div
-                                    className="pointer-events-none absolute -right-3 bottom-16 hidden rounded-2xl border border-primary/15 bg-white/[0.85] px-5 py-4 text-sm font-semibold text-primary shadow-[0_22px_65px_rgba(229,26,26,0.13)] backdrop-blur-xl dark:bg-white/[0.06] sm:block"
-                                    style={{ y: cardCounterDrift }}
-                                >
-                                    Signature brand detail
-                                </motion.div>
 
                                 {/* Central logo card */}
                                 <FloatingElement distance={15} duration={7}>

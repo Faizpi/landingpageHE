@@ -139,15 +139,35 @@ export default function HeroSection({ data }: HeroSectionProps) {
                         variants={itemVariants}
                         className="relative flex items-center justify-center lg:justify-end"
                     >
-                        <div className="relative w-full max-w-sm sm:max-w-md lg:max-w-lg">
-                            <div className="pointer-events-none absolute inset-x-8 bottom-2 h-24 rounded-full bg-primary/15 blur-3xl dark:bg-primary/20" />
-                            <div className="pointer-events-none absolute right-4 top-8 h-36 w-36 rounded-full bg-amber-200/30 blur-3xl dark:bg-amber-300/10" />
+                        <motion.div
+                            className="relative w-full max-w-sm [transform-style:preserve-3d] sm:max-w-md lg:max-w-lg"
+                            animate={{
+                                y: [0, -14, 0],
+                                rotateX: [0, 3, 0, -2, 0],
+                                rotateY: [0, -4, 0, 4, 0],
+                            }}
+                            transition={{
+                                duration: 7,
+                                repeat: Infinity,
+                                ease: 'easeInOut',
+                            }}
+                        >
+                            <motion.div
+                                className="pointer-events-none absolute inset-x-8 bottom-2 h-24 rounded-full bg-primary/15 blur-3xl dark:bg-primary/20"
+                                animate={{ scale: [1, 1.08, 1], opacity: [0.55, 0.8, 0.55] }}
+                                transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
+                            />
+                            <motion.div
+                                className="pointer-events-none absolute right-4 top-8 h-36 w-36 rounded-full bg-amber-200/30 blur-3xl dark:bg-amber-300/10"
+                                animate={{ x: [0, 10, 0], y: [0, -8, 0] }}
+                                transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+                            />
                             <img
                                 src={heroImage}
                                 alt="Hibiscus Efsya"
                                 className="relative z-10 mx-auto w-full object-contain drop-shadow-[0_35px_65px_rgba(15,23,42,0.18)] dark:drop-shadow-[0_35px_70px_rgba(0,0,0,0.55)]"
                             />
-                        </div>
+                        </motion.div>
                     </motion.div>
                 </motion.div>
             </div>
