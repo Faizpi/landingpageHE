@@ -5,6 +5,7 @@ interface AboutSectionProps { readonly data: AboutContent; }
 export default function AboutSection({ data }: AboutSectionProps) {
     const hasCmsImage = Boolean(data.image);
     const image = data.image ? `/storage/${data.image}` : '/hibiscusefsya.png';
+    const featureGridColumns = data.features.length === 4 ? 'lg:grid-cols-2' : 'lg:grid-cols-3';
 
     return (
         <section id="about" className="section-anchor section-shell bg-white dark:bg-neutral-950">
@@ -33,7 +34,7 @@ export default function AboutSection({ data }: AboutSectionProps) {
 
                 {data.features.length > 0 ? (
                     <div className="mt-14 border-t border-gray-200 pt-10 sm:mt-16 dark:border-white/10">
-                        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                        <div className={`grid gap-4 sm:grid-cols-2 ${featureGridColumns}`}>
                             {data.features.map((feature) => (
                                 <article key={`${feature.title}-${feature.description}`} className="min-w-0 rounded-2xl border border-gray-200 bg-gray-50 p-6 dark:border-white/10 dark:bg-white/5">
                                     <h3 className="break-words text-lg font-semibold leading-7 text-gray-950 dark:text-white">{feature.title}</h3>
