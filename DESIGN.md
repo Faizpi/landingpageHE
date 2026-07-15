@@ -72,8 +72,8 @@ Both light and dark themes are supported.
 - Motion is progressive enhancement and must serve hierarchy or interaction.
 - One restrained hero entrance is allowed; repetitive reveal animation across every section is not.
 - Remove scroll velocity rotation, decorative parallax, orbital motion, and arbitrary 3D card transforms.
-- **Single signature exception — hero brand badge:** the pure `/hibiscusefsya.png` logo may sit without a card, border, rounded-square wrapper, or background panel and may use pointer-driven `transform` tilt via spring motion. Its contained gold halo and specular layers must describe the badge material, never create a rectangular surface; reset on pointer leave, never auto-rotate, and remain static under reduced motion. This exception does not authorize other 3D or parallax treatments.
-- The About fallback logo may use one slow, contained ambient transform/opacity decoration; CMS imagery remains still and authoritative. Reduced motion must render the decoration statically.
+- **Hero brand image:** present the pure `/hibiscusefsya.png` logo directly, without a card, badge, border, halo, specular layer, or glow. A restrained pointer-driven spring tilt and modest depth shadow may reinforce interactivity; reset on pointer leave, never move continuously, and remain static under reduced motion.
+- **About brand image:** CMS imagery and the fallback logo share a compact, centered composition at approximately 14rem. Use only an understated full frame and modest static shadow within a restrained stage; no rings, crossing rules, glass, ambient animation, or 3D treatment.
 - `prefers-reduced-motion` shows content immediately and disables nonessential movement.
 - Animate only compositor-friendly properties such as transform and opacity.
 

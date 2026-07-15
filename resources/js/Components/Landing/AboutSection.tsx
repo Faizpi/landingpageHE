@@ -10,8 +10,7 @@ export default function AboutSection({ data }: AboutSectionProps) {
     return (
         <section id="about" className="section-anchor section-shell bg-white dark:bg-neutral-950">
             <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-[0.75fr_1.25fr] lg:px-8">
-                <figure className={`about-image-frame ${hasCmsImage ? 'about-image-frame-cms' : 'about-logo-composition'}`}>
-                    {hasCmsImage ? null : <span className="about-image-rule" aria-hidden="true" />}
+                <figure className="about-image-frame">
                     <img src={image} width="640" height="640" loading="lazy" decoding="async" alt={hasCmsImage ? data.title : 'Hibiscus Efsya'} className={hasCmsImage ? 'about-image-cms' : 'about-fallback-logo'} />
                 </figure>
                 <div>

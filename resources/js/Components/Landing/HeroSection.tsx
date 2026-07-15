@@ -20,8 +20,6 @@ export default function HeroSection({ data }: HeroSectionProps) {
     const pointerY = useMotionValue(0);
     const tiltX = useSpring(useTransform(pointerY, [-0.5, 0.5], [9, -9]), { stiffness: 180, damping: 24, mass: 0.7 });
     const tiltY = useSpring(useTransform(pointerX, [-0.5, 0.5], [-11, 11]), { stiffness: 180, damping: 24, mass: 0.7 });
-    const specularX = useTransform(pointerX, [-0.5, 0.5], [-48, 48]);
-    const specularY = useTransform(pointerY, [-0.5, 0.5], [-48, 48]);
 
     const handleBadgePointerMove = (event: PointerEvent<HTMLDivElement>) => {
         if (prefersReducedMotion) return;
@@ -57,9 +55,7 @@ export default function HeroSection({ data }: HeroSectionProps) {
                         onPointerLeave={resetBadge}
                         style={prefersReducedMotion ? undefined : { rotateX: tiltX, rotateY: tiltY }}
                     >
-                        <span className="hero-badge-halo" aria-hidden="true" />
                         <img src="/hibiscusefsya.png" width="720" height="720" fetchPriority="high" decoding="async" alt="Hibiscus Efsya" className="hero-badge-image" />
-                        <motion.span className="hero-badge-specular" aria-hidden="true" style={prefersReducedMotion ? undefined : { x: specularX, y: specularY }} />
                     </motion.div>
                 </div>
             </div>
