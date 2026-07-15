@@ -1,4 +1,6 @@
 import type { HeroContent } from '@/types';
+import { motion, useMotionValue, useReducedMotion, useSpring, useTransform } from 'framer-motion';
+import type { PointerEvent } from 'react';
 import { HeroArrowRight, HeroMousePointer } from './HeroIcons';
 import { useTranslation } from '../../lib/i18n';
 
@@ -13,6 +15,25 @@ export default function HeroSection({ data }: HeroSectionProps) {
     ].filter((stat): stat is { readonly value: string; readonly label: string } => Boolean(stat.value && stat.label));
     const primaryLabel = data.button_primary_text || t('hero.cta_primary');
     const primaryLink = data.button_primary_link || '#contact';
+    const prefersReducedMotion = useReducedMotion();
+    const pointerX = useMotionValue(0);
+    const pointerY = useMotionValue(0);
+    const tiltX = useSpring(useTransform(pointerY, [-0.5, 0.5], [9, -9]), { stiffness: 180, damping: 24, mass: 0.7 });
+    const tiltY = useSpring(useTransform(pointerX, [-0.5, 0.5], [-11, 11]), { stiffness: 180, damping: 24, mass: 0.7 });
+    const specularX = useTransform(pointerX, [-0.5, 0.5], [-48, 48]);
+    const specularY = useTransform(pointerY, [-0.5, 0.5], [-48, 48]);
+
+    const handleBadgePointerMove = (event: PointerEvent<HTMLDivElement>) => {
+        if (prefersReducedMotion) return;
+        const bounds = event.currentTarget.getBoundingClientRect();
+        pointerX.set((event.clientX - bounds.left) / bounds.width - 0.5);
+        pointerY.set((event.clientY - bounds.top) / bounds.height - 0.5);
+    };
+
+    const resetBadge = () => {
+        pointerX.set(0);
+        pointerY.set(0);
+    };
 
     return (
         <section id="hero" className="section-anchor hero-surface">
@@ -29,8 +50,17 @@ export default function HeroSection({ data }: HeroSectionProps) {
                     </div>
                     {stats.length > 0 ? <dl className="flex flex-wrap gap-x-8 gap-y-4 border-t border-gray-200 pt-6 dark:border-white/10">{stats.map((stat) => <div key={`${stat.value}-${stat.label}`}><dt className="text-sm text-gray-500 dark:text-white/55">{stat.label}</dt><dd className="mt-1 text-2xl font-bold text-gray-950 dark:text-white">{stat.value}</dd></div>)}</dl> : null}
                 </div>
-                <div className="hero-image-frame">
-                    <img src="/hibiscusefsya.png" width="720" height="720" fetchPriority="high" decoding="async" alt="Hibiscus Efsya" className="h-full w-full object-contain" />
+                <div className="hero-badge-stage">
+                    <motion.div
+                        className="hero-badge"
+                        onPointerMove={handleBadgePointerMove}
+                        onPointerLeave={resetBadge}
+                        style={prefersReducedMotion ? undefined : { rotateX: tiltX, rotateY: tiltY }}
+                    >
+                        <span className="hero-badge-halo" aria-hidden="true" />
+                        <img src="/hibiscusefsya.png" width="720" height="720" fetchPriority="high" decoding="async" alt="Hibiscus Efsya" className="hero-badge-image" />
+                        <motion.span className="hero-badge-specular" aria-hidden="true" style={prefersReducedMotion ? undefined : { x: specularX, y: specularY }} />
+                    </motion.div>
                 </div>
             </div>
             <a href="#about" className="hero-scroll-link"><span>{t('hero.scroll')}</span><HeroMousePointer className="h-5 w-5" /></a>
