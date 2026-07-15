@@ -4,6 +4,12 @@
 
 The landing page must feel direct, capable, and approachable. Hibiscus red is the only primary accent. The visual system favors strong typography, real CMS imagery, calm surfaces, and clear conversion paths over gradient text, decorative glass, repeated glow, or motion-heavy effects.
 
+### Approved targeted redesign reference
+
+- The approved About/Pilar and Services screenshots, including the pasted Stitch HTML, are the visual reference for this targeted redesign. They guide hierarchy, composition, and responsive intent only. They do not override this contract, CMS copy authority, existing anchors, backend contracts, or localization rules.
+- This is an integration into the existing design system, not a replacement. The floating capsule navbar remains unchanged in structure, behavior, anchors, controls, and responsive mode.
+- Do not hardcode Stitch copy, fixed list lengths, or visual-only placeholder content. Render CMS-backed content and let the available content determine the visible item count.
+
 ## 2. Themes and Color Roles
 
 Both light and dark themes are supported.
@@ -62,9 +68,36 @@ Both light and dark themes are supported.
 
 ### Service navigation
 
-- Category state must be keyboard operable and communicated independently of color.
+- Category state must use semantic tabs with the expected keyboard model: Tab enters or leaves the tab list, arrow keys move among tabs, and the active tab exposes its selected state and associated panel.
+- Selection must be communicated independently of color, with visible focus in both themes.
 - Narrow screens use reachable horizontal navigation or a quiet wrapping pattern without overflow.
 - Coming-soon items are visibly non-actionable.
+
+### About/Pilar section
+
+- Preserve the existing About anchor and CMS-authored heading and copy. The approved composition is a compact two-column narrative: image stage paired with the About copy, followed by the ecosystem Pilar features and available stats.
+- Image resolution priority is the CMS image first, then `/hibiscusefsya.png` as the fallback. The fallback must preserve the restrained About image treatment defined in Motion and must not create a broken placeholder or empty structural gap.
+- Features and stats are dynamic CMS collections. Render every valid item supplied by the CMS, with stable identifiers when available. Never assume or enforce a fixed content count.
+- The ecosystem feature area may use cards because each feature is a distinct grouped concept, but it must preserve the calm surface and border rules of this system. Stats remain supporting evidence, not a hero-metric composition.
+- Empty state: if features or stats are absent, omit that collection cleanly and let the remaining narrative reflow without placeholder claims, empty wrappers, or unexplained gaps. If both are absent, the two-column About narrative remains complete.
+- Long-content state: headings, copy, labels, values, and descriptions wrap without clipping or overlap. The image column must not force prose below a readable width.
+
+### Services section
+
+- Preserve the existing Services anchor, CMS category and service copy, action destinations, availability state, and backend data contract.
+- Within each selected category, use an asymmetric hierarchy: one large primary service tile, up to two secondary tiles, then a continuation grid for every remaining item. All four or more services remain visible. No carousel, hidden overflow, arbitrary cap, or fixed content count may remove CMS items.
+- Hierarchy follows available ordered CMS content. The first valid item is primary, the next one or two are secondary, and all remaining items continue in the grid. With fewer items, the layout contracts naturally without empty tiles.
+- Primary size signals visual priority only. It must not invent claims, reorder content beyond the CMS-provided order, or change service availability and link behavior.
+- Empty state: a category with no valid services shows a concise localized empty message in its tab panel, without fabricated Stitch content. If no categories exist, omit the tab interface and show the CMS-appropriate section empty state.
+- Long-content state: titles, descriptions, labels, and CTA text wrap within each tile. Tiles expand with content and never rely on equal fixed heights that clip CMS prose.
+
+### Targeted responsive behavior
+
+- Mobile: About becomes one readable column with the image and narrative in source-order context, followed by features and stats. Service tabs remain reachable, the primary and secondary hierarchy becomes a single-column flow, and every continuation item remains visible.
+- Tablet: About may use a balanced two-column layout when copy width stays readable. Services preserve a clearly dominant primary tile with secondary items beside or below it, then a two-column continuation grid where space permits.
+- Desktop: About uses the compact two-column reference composition. Services use the full asymmetric primary, secondary, and continuation hierarchy within the existing centered width.
+- At every breakpoint, preserve anchor targets and account for the unchanged capsule navbar so anchored headings are not obscured.
+- Both light and dark themes use the existing tokens and surface rules. The redesign must not introduce a separate Stitch-only palette, typography scale, shadow language, or component system.
 
 ## 6. Motion
 
