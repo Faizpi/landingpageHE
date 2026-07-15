@@ -4,11 +4,16 @@ declare(strict_types=1);
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 
 class FooterContent extends Model
 {
+    protected $attributes = [
+        'links' => '[]',
+        'social_links' => '[]',
+    ];
+
     protected $fillable = [
         'company_name',
         'tagline',

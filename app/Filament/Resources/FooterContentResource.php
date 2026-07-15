@@ -6,13 +6,14 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\FooterContentResource\Pages;
 use App\Models\FooterContent;
+use App\Rules\SafeLinkDestination;
 use BackedEnum;
 use Filament\Forms\Components\Repeater;
-use Filament\Schemas\Components\Section;
-use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Resources\Resource;
+use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 use Filament\Tables\Table;
 use UnitEnum;
@@ -21,9 +22,9 @@ class FooterContentResource extends Resource
 {
     protected static ?string $model = FooterContent::class;
 
-    protected static string | BackedEnum | null $navigationIcon = 'heroicon-o-document-text';
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-document-text';
 
-    protected static string | UnitEnum | null $navigationGroup = 'Content';
+    protected static string|UnitEnum|null $navigationGroup = 'Content';
 
     protected static ?int $navigationSort = 6;
 
@@ -55,7 +56,7 @@ class FooterContentResource extends Resource
                             ->maxLength(255),
                         TextInput::make('url')
                             ->required()
-                            ->url()
+                            ->rule(new SafeLinkDestination)
                             ->maxLength(255),
                     ])
                     ->columns(2)
@@ -63,22 +64,19 @@ class FooterContentResource extends Resource
             ]),
 
             Section::make('Social Links')->schema([
-                Repeater::make('social_links')
-                    ->schema([
-                        TextInput::make('platform')
-                            ->required()
-                            ->maxLength(50),
-                        TextInput::make('url')
-                            ->required()
-                            ->url()
-                            ->maxLength(255),
-                        TextInput::make('icon')
-                            ->label('Icon (Heroicon name)')
-                            ->maxLength(255),
-                    ])
-                    ->columns(3)
-                    ->addActionLabel('Add Social Link'),
-            ]),
+                TextInput::make('social_links.whatsapp')
+                    ->label('WhatsApp URL')
+                    ->url()
+                    ->maxLength(255),
+                TextInput::make('social_links.instagram')
+                    ->label('Instagram URL')
+                    ->url()
+                    ->maxLength(255),
+                TextInput::make('social_links.facebook')
+                    ->label('Facebook URL')
+                    ->url()
+                    ->maxLength(255),
+            ])->columns(3),
 
             Section::make('Status')->schema([
                 Toggle::make('is_active')

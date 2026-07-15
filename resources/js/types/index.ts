@@ -82,8 +82,8 @@ export interface FooterContent {
     tagline: string | null;
     description: string | null;
     copyright_text: string | null;
-    links: { label: string; url: string }[];
-    social_links: SocialLinks;
+    links: { label: string; url: string }[] | null;
+    social_links: SocialLinks | null;
 }
 
 export interface LandingPageProps {

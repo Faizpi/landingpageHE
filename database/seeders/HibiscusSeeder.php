@@ -223,9 +223,9 @@ class HibiscusSeeder extends Seeder
                     ['label' => 'Kontak', 'url' => '#contact'],
                 ],
                 'social_links' => [
-                    ['platform' => 'WhatsApp', 'url' => 'https://wa.me/6281234567890', 'icon' => 'heroicon-o-phone'],
-                    ['platform' => 'Instagram', 'url' => 'https://instagram.com/hibiscusefsya', 'icon' => 'heroicon-o-camera'],
-                    ['platform' => 'Facebook', 'url' => 'https://facebook.com/hibiscusefsya', 'icon' => 'heroicon-o-globe-alt'],
+                    'whatsapp' => 'https://wa.me/6281234567890',
+                    'instagram' => 'https://instagram.com/hibiscusefsya',
+                    'facebook' => 'https://facebook.com/hibiscusefsya',
                 ],
                 'is_active' => true,
             ],

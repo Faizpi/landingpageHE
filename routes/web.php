@@ -2,11 +2,15 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\LandingController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-Route::get('/', fn () => app(\App\Http\Controllers\LandingController::class)->index())->name('home');
+Route::get('/', fn () => app(LandingController::class)->index())->name('home');
+Route::post('/contact', [LandingController::class, 'submitContact'])
+    ->middleware('throttle:5,1')
+    ->name('contact.submit');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
