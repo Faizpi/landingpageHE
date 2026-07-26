@@ -8,6 +8,7 @@ const translations = {
         nav: { about: 'Tentang', services: 'Layanan', contact: 'Kontak', home: 'Beranda' },
         hero: { cta_primary: 'Mulai bermitra', cta_secondary: 'Lihat layanan', scroll: 'Jelajahi lebih lanjut' },
         about: { label: 'Tentang kami', why_partner: 'Mengapa bermitra' },
+        footer_nav: { title: 'Navigasi', social: 'Ikuti kami' },
         services: { label: 'Layanan', title: 'Solusi digital yang jelas untuk langkah bisnis berikutnya.', description: 'Pilih kategori untuk menemukan layanan yang paling sesuai dengan kebutuhan bisnis Anda.', visit: 'Kunjungi layanan', coming_soon: 'Segera hadir', empty: 'Layanan untuk kategori ini akan segera tersedia.' },
         contact: { label: 'Hubungi kami', name: 'Nama lengkap', email: 'Email', subject: 'Subjek', message: 'Pesan', send: 'Kirim pesan', sending: 'Mengirim pesan…', quick_chat: 'Chat via WhatsApp', phone: 'Telepon', address: 'Alamat', success: 'Pesan Anda telah terkirim. Kami akan segera menghubungi Anda.', failure: 'Pesan belum dapat dikirim. Silakan coba lagi atau gunakan saluran kontak alternatif.', fallback: 'Hubungi melalui saluran alternatif' },
         footer: { services: 'Layanan', company: 'Perusahaan', about: 'Tentang kami', contact: 'Kontak' },
@@ -16,6 +17,7 @@ const translations = {
         nav: { about: 'About', services: 'Services', contact: 'Contact', home: 'Home' },
         hero: { cta_primary: 'Start a partnership', cta_secondary: 'Explore services', scroll: 'Explore more' },
         about: { label: 'About us', why_partner: 'Why partner' },
+        footer_nav: { title: 'Navigation', social: 'Follow us' },
         services: { label: 'Services', title: 'Clear digital solutions for your next business step.', description: 'Choose a category to find services that fit your business needs.', visit: 'Visit service', coming_soon: 'Coming soon', empty: 'Services for this category will be available soon.' },
         contact: { label: 'Contact us', name: 'Full name', email: 'Email', subject: 'Subject', message: 'Message', send: 'Send message', sending: 'Sending message…', quick_chat: 'Chat via WhatsApp', phone: 'Phone', address: 'Address', success: 'Your message has been sent. We will be in touch shortly.', failure: 'Your message could not be sent. Please try again or use an alternative contact channel.', fallback: 'Use an alternative contact channel' },
         footer: { services: 'Services', company: 'Company', about: 'About us', contact: 'Contact' },
@@ -26,6 +28,15 @@ type TranslationContextValue = {
     readonly locale: Locale;
     readonly setLocale: (locale: Locale) => void;
     readonly t: (key: string) => string;
+    /**
+     * Memilih teks CMS sesuai bahasa aktif.
+     *
+     * Konten disimpan berpasangan di database (`title` untuk Indonesia,
+     * `title_en` untuk Inggris). Bila versi Inggris kosong — misalnya karena
+     * terjemahan otomatis gagal — teks Indonesia dipakai sebagai cadangan
+     * sehingga halaman tidak pernah menampilkan bagian kosong.
+     */
+    readonly pick: (indonesian: string | null | undefined, english: string | null | undefined) => string;
 };
 
 const TranslationContext = createContext<TranslationContextValue | null>(null);
@@ -52,6 +63,15 @@ export function TranslationProvider({ children }: { readonly children: ReactNode
         locale,
         setLocale: setLocaleState,
         t: (key) => readTranslation(translations[locale], key),
+        pick: (indonesian, english) => {
+            const preferred = locale === 'en' ? english : indonesian;
+            const fallback = locale === 'en' ? indonesian : english;
+
+            if (typeof preferred === 'string' && preferred.trim() !== '') return preferred;
+            if (typeof fallback === 'string' && fallback.trim() !== '') return fallback;
+
+            return '';
+        },
     }), [locale]);
 
     return createElement(TranslationContext.Provider, { value }, children);
