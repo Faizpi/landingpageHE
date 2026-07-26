@@ -5,8 +5,11 @@
 .env.production
 .phpactor.json
 .phpunit.result.cache
+/.codegraph
 /.codex
 /.cursor/
+/.omo
+/.playwright-mcp
 /.idea
 /.nova
 /.phpunit.cache
