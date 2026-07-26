@@ -11,8 +11,8 @@
         <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png">
         <link rel="icon" type="image/png" sizes="512x512" href="/logo-mark-512.png">
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-        <meta name="theme-color" content="#faf7f0" media="(prefers-color-scheme: light)">
-        <meta name="theme-color" content="#0d0c0b" media="(prefers-color-scheme: dark)">
+        <meta name="theme-color" content="#faf6f4" media="(prefers-color-scheme: light)">
+        <meta name="theme-color" content="#0e0b0a" media="(prefers-color-scheme: dark)">
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">

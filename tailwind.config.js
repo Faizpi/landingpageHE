@@ -20,55 +20,55 @@ export default {
                 body: ['Outfit', ...defaultTheme.fontFamily.sans],
             },
             colors: {
-                // Perunggu brand — diambil langsung dari emblem logo. Dipakai untuk
-                // judul sorotan, tautan, dan aksen aktif (arah Bronze Monochrome:
-                // tanpa merah; merah hanya tersisa untuk pesan error fungsional).
+                // Merah brand — disampel langsung dari bunga hibiscus pada logo
+                // (#c8000f). Dipakai untuk judul sorotan, tautan, dan aksen aktif;
+                // kontras dijaga lewat nilai terang-gelap dalam satu keluarga merah.
                 primary: {
-                    50: '#faf6ec',
-                    100: '#f4ecdd',
-                    200: '#e6d5b8',
-                    300: '#d2b98c',
-                    400: '#bd9d64',
-                    500: '#a37f45',
-                    600: '#8a6935',
-                    700: '#6f5329',
-                    800: '#553f1f',
-                    900: '#3a2b15',
-                    DEFAULT: '#8a6935',
+                    50: '#fdf1f1',
+                    100: '#fbe1e2',
+                    200: '#f8c1c4',
+                    300: '#f2939a',
+                    400: '#e75765',
+                    500: '#d5202f',
+                    600: '#c8000f',
+                    700: '#a3000d',
+                    800: '#7c010c',
+                    900: '#540309',
+                    DEFAULT: '#c8000f',
                 },
-                // Emas tembaga — diambil dari emblem logo, dipakai untuk eyebrow & label kecil.
+                // Merah aksen — skala pendek dari merah logo, dipakai untuk eyebrow & label kecil.
                 gold: {
-                    100: '#f4ecdd',
-                    200: '#e6d5b8',
-                    300: '#d2b98c',
-                    400: '#bd9d64',
-                    500: '#a37f45',
-                    600: '#8a6935',
-                    DEFAULT: '#a37f45',
+                    100: '#fbe1e2',
+                    200: '#f8c1c4',
+                    300: '#f2939a',
+                    400: '#e75765',
+                    500: '#d5202f',
+                    600: '#c8000f',
+                    DEFAULT: '#d5202f',
                 },
-                // Latar krem hangat untuk mode terang.
+                // Latar putih gading dengan rona mawar halus untuk mode terang.
                 cream: {
-                    50: '#fdfbf7',
-                    100: '#faf7f0',
-                    200: '#f4efe4',
-                    300: '#e9e1d2',
-                    DEFAULT: '#faf7f0',
+                    50: '#fdfbfa',
+                    100: '#faf6f4',
+                    200: '#f5ecea',
+                    300: '#ebdcd8',
+                    DEFAULT: '#faf6f4',
                 },
                 // Netral hangat untuk teks — lebih lembut daripada abu-abu murni.
                 ink: {
-                    900: '#171412',
-                    800: '#2a2521',
-                    700: '#453d36',
-                    600: '#6b615a',
-                    500: '#8a7f76',
-                    DEFAULT: '#171412',
+                    900: '#1a1312',
+                    800: '#2d2220',
+                    700: '#483836',
+                    600: '#6e5c59',
+                    500: '#8d7b77',
+                    DEFAULT: '#1a1312',
                 },
                 // Permukaan mode gelap bernuansa hangat agar selaras dengan emblem.
                 night: {
-                    950: '#0d0c0b',
-                    900: '#131110',
-                    800: '#1b1917',
-                    700: '#252220',
+                    950: '#0e0b0a',
+                    900: '#141010',
+                    800: '#1c1716',
+                    700: '#262020',
                 },
                 accent: {
                     rose: '#ff6b8a',

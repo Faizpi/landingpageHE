@@ -10,8 +10,8 @@
         --surface-page: theme('colors.cream.100');
         --surface-raised: #ffffff;
         --surface-sunken: theme('colors.cream.200');
-        --line-soft: rgba(23, 20, 18, 0.10);
-        --line-strong: rgba(23, 20, 18, 0.18);
+        --line-soft: rgba(26, 19, 18, 0.10);
+        --line-strong: rgba(26, 19, 18, 0.18);
     }
 
     .dark {
@@ -44,12 +44,12 @@
     p { text-wrap: pretty; }
 
     ::selection {
-        background: rgba(163, 127, 69, 0.22);
+        background: rgba(200, 0, 15, 0.16);
         color: theme('colors.ink.900');
     }
 
     .dark ::selection {
-        background: rgba(210, 185, 140, 0.3);
+        background: rgba(242, 147, 154, 0.3);
         color: #ffffff;
     }
 }
@@ -89,7 +89,7 @@
         @apply max-w-3xl font-display text-4xl font-bold leading-[1.08] tracking-[-0.02em] text-ink-900 sm:text-5xl lg:text-[3.25rem] dark:text-cream-50;
     }
 
-    /* Bagian judul yang disorot: serif miring berwarna perunggu brand. */
+    /* Bagian judul yang disorot: serif miring berwarna merah brand. */
     .title-accent {
         @apply font-display italic text-primary-600 dark:text-primary-300;
     }
@@ -171,9 +171,9 @@
     /* Cahaya lembut di belakang emblem, tidak mengganggu keterbacaan teks. */
     .hero-glow {
         @apply pointer-events-none absolute -right-40 top-1/4 hidden h-[42rem] w-[42rem] rounded-full lg:block;
-        background: radial-gradient(circle, rgba(163, 127, 69, 0.13) 0%, transparent 68%);
+        background: radial-gradient(circle, rgba(200, 0, 15, 0.10) 0%, transparent 68%);
     }
-    .dark .hero-glow { background: radial-gradient(circle, rgba(163, 127, 69, 0.16) 0%, transparent 68%); }
+    .dark .hero-glow { background: radial-gradient(circle, rgba(200, 0, 15, 0.15) 0%, transparent 68%); }
 
     .hero-title {
         @apply max-w-[19ch] font-display text-[2.75rem] font-bold leading-[1.04] tracking-[-0.025em] text-ink-900 sm:text-6xl lg:text-[4.25rem] dark:text-cream-50;
@@ -270,7 +270,8 @@
         background-color: var(--surface-sunken);
     }
     textarea.form-field { @apply min-h-40 py-3; }
-    /* Pesan error tetap merah — merah kini murni warna fungsional, bukan brand. */
+    /* Pesan error memakai merah fungsional Tailwind — dibedakan dari merah
+       brand lewat nada yang lebih menyala. */
     .form-error { @apply mt-2 block text-sm font-medium text-red-700 dark:text-red-300; }
 
     .success-message {
