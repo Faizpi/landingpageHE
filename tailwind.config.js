@@ -21,30 +21,31 @@ export default {
             },
             colors: {
                 // Merah brand — disampel langsung dari bunga hibiscus pada logo
-                // (#c8000f). Dipakai untuk judul sorotan, tautan, dan aksen aktif;
-                // kontras dijaga lewat nilai terang-gelap dalam satu keluarga merah.
+                // (#ce0b19). Dipakai untuk judul sorotan, tautan, dan aksen aktif.
+                // Stop 300-400 sengaja dijaga tetap jenuh (bukan pastel) supaya di
+                // mode gelap tetap terbaca merah, bukan pink.
                 primary: {
                     50: '#fdf1f1',
                     100: '#fbe1e2',
                     200: '#f8c1c4',
-                    300: '#f2939a',
-                    400: '#e75765',
-                    500: '#d5202f',
-                    600: '#c8000f',
-                    700: '#a3000d',
-                    800: '#7c010c',
+                    300: '#ff7b72',
+                    400: '#f4453b',
+                    500: '#e0212b',
+                    600: '#ce0b19',
+                    700: '#a50511',
+                    800: '#7c030c',
                     900: '#540309',
-                    DEFAULT: '#c8000f',
+                    DEFAULT: '#ce0b19',
                 },
                 // Merah aksen — skala pendek dari merah logo, dipakai untuk eyebrow & label kecil.
                 gold: {
                     100: '#fbe1e2',
                     200: '#f8c1c4',
-                    300: '#f2939a',
-                    400: '#e75765',
-                    500: '#d5202f',
-                    600: '#c8000f',
-                    DEFAULT: '#d5202f',
+                    300: '#ff867d',
+                    400: '#f4453b',
+                    500: '#e0212b',
+                    600: '#ce0b19',
+                    DEFAULT: '#e0212b',
                 },
                 // Latar putih gading dengan rona mawar halus untuk mode terang.
                 cream: {
