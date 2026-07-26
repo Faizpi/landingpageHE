@@ -37,10 +37,12 @@ $commands = [
     'Storage Force Link' => 'storage:link --force',
     'Migrate Status'     => 'migrate:status',
     'Migrate'            => 'migrate',
+    'Migrate Force'      => 'migrate --force',
     'Migrate Fresh'      => 'migrate:fresh',
     'Migrate Seed'       => 'migrate --seed',
     'Filament Upgrade'   => 'filament:upgrade',
     'Import Legacy Data' => 'import:legacy-data',
+    'Fill EN Translations' => 'fill:en-translations', // dieksekusi via custom handler, bukan artisan
 ];
 
 $presets = [
@@ -48,9 +50,54 @@ $presets = [
     'Full Clear'            => ['Cache Clear', 'Config Clear', 'Route Clear', 'View Clear', 'Optimize Clear'],
     'Filament Assets Update'=> ['Filament Upgrade', 'Cache Clear', 'View Clear', 'Optimize'],
     'Database Refresh'      => ['Migrate Fresh', 'Migrate Seed', 'Storage Force Link'],
+    'Bilingual Update'      => ['Migrate Force', 'Fill EN Translations', 'Cache Clear', 'Config Clear', 'Optimize'],
 ];
 
 $customHandlers = [
+    /**
+     * Mengisi kolom *_en untuk data lama dengan menyimpan ulang setiap record.
+     * Trait AutoTranslatable pada model akan menerjemahkan otomatis saat save.
+     * Aman dijalankan berulang: kolom EN yang sudah terisi tidak ditimpa.
+     * Butuh akses internet keluar ke translate.googleapis.com.
+     */
+    'Fill EN Translations' => function() {
+        $models = [
+            \App\Models\HeroContent::class,
+            \App\Models\AboutContent::class,
+            \App\Models\ContactContent::class,
+            \App\Models\FooterContent::class,
+            \App\Models\ServiceCategory::class,
+            \App\Models\Service::class,
+        ];
+
+        $totalSaved = 0;
+        $failures = 0;
+
+        foreach ($models as $modelClass) {
+            $shortName = class_basename($modelClass);
+            $count = 0;
+
+            foreach ($modelClass::all() as $record) {
+                try {
+                    $record->save();
+                    $count++;
+                } catch (Throwable $e) {
+                    $failures++;
+                    echo "✗ {$shortName} #{$record->getKey()}: {$e->getMessage()}\n";
+                }
+            }
+
+            $totalSaved += $count;
+            echo "✓ {$shortName}: {$count} record diproses\n";
+        }
+
+        echo "\nSelesai. Total {$totalSaved} record disimpan ulang";
+        echo $failures > 0 ? ", {$failures} gagal.\n" : ".\n";
+        echo "Catatan: kolom EN yang masih kosong berarti terjemahan gagal (cek koneksi keluar server); frontend otomatis memakai teks Indonesia.\n";
+
+        return $failures > 0 ? 1 : 0;
+    },
+
     'Storage Force Link' => function() use ($projectPath, $kernel) {
         $publicStorage = $projectPath . '/public/storage';
         if (file_exists($publicStorage)) {
