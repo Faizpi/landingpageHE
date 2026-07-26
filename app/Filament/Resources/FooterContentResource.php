@@ -13,6 +13,7 @@ use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Resources\Resource;
+use Filament\Schemas\Components\Grid;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 use Filament\Tables\Table;
@@ -33,20 +34,43 @@ class FooterContentResource extends Resource
     public static function form(Schema $schema): Schema
     {
         return $schema->schema([
-            Section::make('Footer Content')->schema([
-                TextInput::make('company_name')
-                    ->label('Company Name')
-                    ->required()
-                    ->maxLength(255),
-                TextInput::make('tagline')
-                    ->maxLength(255),
-                Textarea::make('description')
-                    ->rows(3)
-                    ->maxLength(1000),
-                TextInput::make('copyright_text')
-                    ->label('Copyright Text')
-                    ->maxLength(255),
-            ]),
+            Section::make('Footer Content')
+                ->description('Isi kolom Bahasa Indonesia saja. Kolom English terisi otomatis saat disimpan — boleh Anda timpa manual bila hasilnya kurang pas.')
+                ->schema([
+                    TextInput::make('company_name')
+                        ->label('Company Name')
+                        ->required()
+                        ->maxLength(255),
+                    Grid::make(2)->schema([
+                        TextInput::make('tagline')
+                            ->label('Tagline (ID)')
+                            ->maxLength(255),
+                        TextInput::make('tagline_en')
+                            ->label('Tagline (EN)')
+                            ->placeholder('Terisi otomatis')
+                            ->maxLength(255),
+                    ]),
+                    Grid::make(2)->schema([
+                        Textarea::make('description')
+                            ->label('Description (ID)')
+                            ->rows(3)
+                            ->maxLength(1000),
+                        Textarea::make('description_en')
+                            ->label('Description (EN)')
+                            ->placeholder('Terisi otomatis')
+                            ->rows(3)
+                            ->maxLength(1000),
+                    ]),
+                    Grid::make(2)->schema([
+                        TextInput::make('copyright_text')
+                            ->label('Copyright Text (ID)')
+                            ->maxLength(255),
+                        TextInput::make('copyright_text_en')
+                            ->label('Copyright Text (EN)')
+                            ->placeholder('Terisi otomatis')
+                            ->maxLength(255),
+                    ]),
+                ]),
 
             Section::make('Links')->schema([
                 Repeater::make('links')

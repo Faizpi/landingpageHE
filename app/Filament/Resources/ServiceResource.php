@@ -46,15 +46,33 @@ class ServiceResource extends Resource
                 ->options(ServiceCategory::pluck('title', 'id'))
                 ->required()
                 ->searchable(),
-            TextInput::make('name')
-                ->required()
-                ->maxLength(255),
-            Textarea::make('description')
-                ->rows(3)
-                ->maxLength(1000),
+            Grid::make(2)->schema([
+                TextInput::make('name')
+                    ->label('Name (ID)')
+                    ->required()
+                    ->maxLength(255),
+                TextInput::make('name_en')
+                    ->label('Name (EN)')
+                    ->placeholder('Terisi otomatis')
+                    ->maxLength(255),
+            ]),
+            Grid::make(2)->schema([
+                Textarea::make('description')
+                    ->label('Description (ID)')
+                    ->rows(3)
+                    ->maxLength(1000),
+                Textarea::make('description_en')
+                    ->label('Description (EN)')
+                    ->placeholder('Terisi otomatis')
+                    ->rows(3)
+                    ->maxLength(1000),
+            ]),
             FileUpload::make('image')
                 ->label('Service Image')
+                ->helperText('Disarankan rasio 16:9 (contoh 1600 × 900 px) agar tampil penuh tanpa terpotong.')
                 ->image()
+                ->imageEditor()
+                ->imageEditorAspectRatios(['16:9'])
                 ->disk('public')
                 ->directory('images')
                 ->maxSize(2048),

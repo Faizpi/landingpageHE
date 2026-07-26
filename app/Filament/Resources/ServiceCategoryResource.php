@@ -6,9 +6,11 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\ServiceCategoryResource\Pages;
 use App\Models\ServiceCategory;
+use App\Support\ServiceIcon;
 use BackedEnum;
 use Filament\Forms\Components\ColorPicker;
 use Filament\Schemas\Components\Grid;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Resources\Resource;
@@ -37,12 +39,22 @@ class ServiceCategoryResource extends Resource
     public static function form(Schema $schema): Schema
     {
         return $schema->schema([
-            TextInput::make('title')
-                ->required()
-                ->maxLength(255),
-            TextInput::make('icon')
-                ->label('Icon (Heroicon name)')
-                ->maxLength(255),
+            Grid::make(2)->schema([
+                TextInput::make('title')
+                    ->label('Title (ID)')
+                    ->required()
+                    ->maxLength(255),
+                TextInput::make('title_en')
+                    ->label('Title (EN)')
+                    ->placeholder('Terisi otomatis')
+                    ->maxLength(255),
+            ]),
+            Select::make('icon')
+                ->label('Icon')
+                ->options(ServiceIcon::options())
+                ->searchable()
+                ->native(false)
+                ->placeholder('Pilih ikon'),
             Grid::make(2)->schema([
                 ColorPicker::make('color')
                     ->label('Text Color'),

@@ -32,22 +32,49 @@ class ContactContentResource extends Resource
     public static function form(Schema $schema): Schema
     {
         return $schema->schema([
-            Section::make('Contact Content')->schema([
-                TextInput::make('section_label')
-                    ->label('Section Label')
-                    ->maxLength(255),
-                Grid::make(2)->schema([
-                    TextInput::make('title')
-                        ->required()
-                        ->maxLength(255),
-                    TextInput::make('title_highlight')
-                        ->label('Title Highlight')
-                        ->maxLength(255),
+            Section::make('Contact Content')
+                ->description('Isi kolom Bahasa Indonesia saja. Kolom English terisi otomatis saat disimpan — boleh Anda timpa manual bila hasilnya kurang pas.')
+                ->schema([
+                    Grid::make(2)->schema([
+                        TextInput::make('section_label')
+                            ->label('Section Label (ID)')
+                            ->maxLength(255),
+                        TextInput::make('section_label_en')
+                            ->label('Section Label (EN)')
+                            ->placeholder('Terisi otomatis')
+                            ->maxLength(255),
+                    ]),
+                    Grid::make(2)->schema([
+                        TextInput::make('title')
+                            ->label('Title (ID)')
+                            ->required()
+                            ->maxLength(255),
+                        TextInput::make('title_en')
+                            ->label('Title (EN)')
+                            ->placeholder('Terisi otomatis')
+                            ->maxLength(255),
+                    ]),
+                    Grid::make(2)->schema([
+                        TextInput::make('title_highlight')
+                            ->label('Title Highlight (ID)')
+                            ->maxLength(255),
+                        TextInput::make('title_highlight_en')
+                            ->label('Title Highlight (EN)')
+                            ->placeholder('Terisi otomatis')
+                            ->maxLength(255),
+                    ]),
+                    Grid::make(2)->schema([
+                        Textarea::make('description')
+                            ->label('Description (ID)')
+                            ->rows(3)
+                            ->maxLength(1000),
+                        Textarea::make('description_en')
+                            ->label('Description (EN)')
+                            ->placeholder('Terisi otomatis')
+                            ->rows(3)
+                            ->maxLength(1000),
+                    ]),
                 ]),
-                Textarea::make('description')
-                    ->rows(3)
-                    ->maxLength(1000),
-            ]),
 
             Section::make('Contact Information')->schema([
                 TextInput::make('contact_info.email')
