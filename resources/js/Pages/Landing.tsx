@@ -13,7 +13,7 @@ export default function Landing({ hero, about, categories, contact, footer }: La
     return (
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
             <TranslationProvider>
-                <Head title="Hibiscus Efsya | Part of M.B.K Indonesia - Solusi Digital Terpercaya" />
+                <Head title="Hibiscus Efsya Indonesia | Bangun Bisnis Impian Anda Bersama" />
                 <Navbar />
                 <main className="min-h-screen surface-page transition-colors duration-300">
                     <HeroSection data={hero} />

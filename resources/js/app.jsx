@@ -9,7 +9,7 @@ const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 const pages = import.meta.glob(['./Pages/**/*.jsx', './Pages/**/*.tsx']);
 
 createInertiaApp({
-    title: (title) => `${title} - ${appName}`,
+    title: (title) => (title.includes('Hibiscus Efsya') ? title : `${title} - ${appName}`),
     resolve: (name) => {
         const key = Object.keys(pages).find(
             (k) => k === `./Pages/${name}.jsx` || k === `./Pages/${name}.tsx`

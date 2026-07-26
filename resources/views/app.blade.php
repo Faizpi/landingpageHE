@@ -4,9 +4,64 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title inertia>{{ config('app.name', 'Laravel') }}</title>
+        @php
+            // SEO dasar dirender di server supaya Google tetap membaca judul,
+            // deskripsi, dan logo meski JavaScript belum/tidak dijalankan.
+            $seoBase = rtrim(config('app.url'), '/');
+            $seoTitle = 'Hibiscus Efsya Indonesia | Bangun Bisnis Impian Anda Bersama';
+            $seoDescription = 'Hibiscus Efsya Indonesia menghadirkan peluang franchise terbaik dengan dukungan penuh tim profesional. Bergabunglah dengan 500+ mitra sukses di 50+ kota dan wujudkan bisnis impian Anda.';
+            $seoJsonLd = [
+                '@context' => 'https://schema.org',
+                '@graph' => [
+                    [
+                        '@type' => 'Organization',
+                        '@id' => $seoBase.'/#organization',
+                        'name' => 'Hibiscus Efsya Indonesia',
+                        'url' => $seoBase.'/',
+                        'logo' => $seoBase.'/logo-mark-512.png',
+                        'description' => $seoDescription,
+                        'sameAs' => [
+                            'https://instagram.com/hibiscusefsya',
+                            'https://facebook.com/hibiscusefsya',
+                            'https://bodycare.hibiscusefsya.com',
+                        ],
+                    ],
+                    [
+                        '@type' => 'WebSite',
+                        '@id' => $seoBase.'/#website',
+                        'name' => 'Hibiscus Efsya Indonesia',
+                        'url' => $seoBase.'/',
+                        'publisher' => ['@id' => $seoBase.'/#organization'],
+                        'inLanguage' => 'id-ID',
+                    ],
+                ],
+            ];
+        @endphp
 
-        <!-- Ikon situs: emblem Hibiscus Efsya (dipakai konsisten dengan navbar & footer) -->
+        <title inertia>{{ $seoTitle }}</title>
+        <meta name="description" content="{{ $seoDescription }}">
+        <meta name="robots" content="index, follow, max-image-preview:large">
+        <link rel="canonical" href="{{ $seoBase }}/">
+
+        <!-- Open Graph & Twitter Card -->
+        <meta property="og:type" content="website">
+        <meta property="og:site_name" content="Hibiscus Efsya Indonesia">
+        <meta property="og:locale" content="id_ID">
+        <meta property="og:title" content="{{ $seoTitle }}">
+        <meta property="og:description" content="{{ $seoDescription }}">
+        <meta property="og:url" content="{{ $seoBase }}/">
+        <meta property="og:image" content="{{ $seoBase }}/logo-mark-512.png">
+        <meta property="og:image:width" content="512">
+        <meta property="og:image:height" content="512">
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:title" content="{{ $seoTitle }}">
+        <meta name="twitter:description" content="{{ $seoDescription }}">
+        <meta name="twitter:image" content="{{ $seoBase }}/logo-mark-512.png">
+
+        <!-- Structured data: organisasi + situs (logo & nama untuk hasil pencarian Google) -->
+        <script type="application/ld+json">{!! json_encode($seoJsonLd, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}</script>
+
+        <!-- Ikon situs: logo hibiscus (dipakai konsisten dengan navbar & footer) -->
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
         <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png">
         <link rel="icon" type="image/png" sizes="512x512" href="/logo-mark-512.png">
