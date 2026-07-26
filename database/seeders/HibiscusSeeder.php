@@ -76,22 +76,22 @@ class HibiscusSeeder extends Seeder
                 'description' => 'Kami adalah perusahaan franchise terpercaya yang telah membantu ratusan mitra sukses di seluruh Indonesia. Dengan sistem yang teruji dan dukungan penuh, kami siap membantu Anda membangun bisnis impian.',
                 'features' => [
                     [
-                        'icon' => '🛡️',
+                        'icon' => 'shield',
                         'title' => 'Sistem Teruji',
                         'description' => 'Model bisnis yang telah terbukti sukses dengan ratusan mitra aktif di seluruh Indonesia.',
                     ],
                     [
-                        'icon' => '🎓',
+                        'icon' => 'graduation-cap',
                         'title' => 'Pelatihan Lengkap',
                         'description' => 'Program pelatihan komprehensif untuk memastikan setiap mitra siap menjalankan bisnis.',
                     ],
                     [
-                        'icon' => '💰',
+                        'icon' => 'chart',
                         'title' => 'ROI Cepat',
                         'description' => 'Return on investment yang cepat dengan dukungan strategi pemasaran yang efektif.',
                     ],
                     [
-                        'icon' => '👥',
+                        'icon' => 'users',
                         'title' => 'Dukungan 24/7',
                         'description' => 'Tim support yang siap membantu Anda kapan saja dalam menjalankan bisnis.',
                     ],
@@ -112,7 +112,7 @@ class HibiscusSeeder extends Seeder
         $categories = [
             [
                 'title' => 'Body Care',
-                'icon' => '✨',
+                'icon' => 'sparkles',
                 'color' => '#ec4899',
                 'bg_color' => '#fdf2f8',
                 'sort_order' => 1,
@@ -124,7 +124,7 @@ class HibiscusSeeder extends Seeder
             ],
             [
                 'title' => 'Fashion',
-                'icon' => '🛍️',
+                'icon' => 'shopping-bag',
                 'color' => '#8b5cf6',
                 'bg_color' => '#f5f3ff',
                 'sort_order' => 2,
@@ -136,7 +136,7 @@ class HibiscusSeeder extends Seeder
             ],
             [
                 'title' => 'Travel',
-                'icon' => '🌍',
+                'icon' => 'globe',
                 'color' => '#06b6d4',
                 'bg_color' => '#ecfeff',
                 'sort_order' => 3,
@@ -148,7 +148,7 @@ class HibiscusSeeder extends Seeder
             ],
             [
                 'title' => 'Technology',
-                'icon' => '💻',
+                'icon' => 'monitor',
                 'color' => '#10b981',
                 'bg_color' => '#ecfdf5',
                 'sort_order' => 4,
