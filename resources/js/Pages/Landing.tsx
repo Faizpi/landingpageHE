@@ -15,7 +15,7 @@ export default function Landing({ hero, about, categories, contact, footer }: La
             <TranslationProvider>
                 <Head title="Hibiscus Efsya | Part of M.B.K Indonesia - Solusi Digital Terpercaya" />
                 <Navbar />
-                <main className="min-h-screen bg-white text-gray-950 transition-colors duration-200 dark:bg-neutral-950 dark:text-white">
+                <main className="min-h-screen surface-page transition-colors duration-300">
                     <HeroSection data={hero} />
                     <AboutSection data={about} />
                     <ServicesSection categories={categories} />
