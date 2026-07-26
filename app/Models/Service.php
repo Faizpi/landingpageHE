@@ -4,16 +4,27 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Models\Concerns\AutoTranslatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Service extends Model
 {
+    use AutoTranslatable;
+
+    /** @var array<string, string> */
+    protected array $translatable = [
+        'name' => 'name_en',
+        'description' => 'description_en',
+    ];
+
     protected $fillable = [
         'category_id',
         'name',
+        'name_en',
         'description',
+        'description_en',
         'image',
         'link',
         'is_coming_soon',

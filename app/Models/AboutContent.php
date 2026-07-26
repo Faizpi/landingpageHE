@@ -4,16 +4,31 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Models\Concerns\AutoTranslatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 
 class AboutContent extends Model
 {
+    use AutoTranslatable;
+
+    /** @var array<string, string> */
+    protected array $translatable = [
+        'section_label' => 'section_label_en',
+        'title' => 'title_en',
+        'title_highlight' => 'title_highlight_en',
+        'description' => 'description_en',
+    ];
+
     protected $fillable = [
         'section_label',
+        'section_label_en',
         'title',
+        'title_en',
         'title_highlight',
+        'title_highlight_en',
         'description',
+        'description_en',
         'features',
         'stats',
         'image',

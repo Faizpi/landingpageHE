@@ -4,14 +4,23 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Models\Concerns\AutoTranslatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class ServiceCategory extends Model
 {
+    use AutoTranslatable;
+
+    /** @var array<string, string> */
+    protected array $translatable = [
+        'title' => 'title_en',
+    ];
+
     protected $fillable = [
         'title',
+        'title_en',
         'icon',
         'color',
         'bg_color',
