@@ -16,22 +16,59 @@ export default {
         extend: {
             fontFamily: {
                 sans: ['Outfit', ...defaultTheme.fontFamily.sans],
-                display: ['Playfair Display', 'serif'],
+                display: ['"Playfair Display"', 'Georgia', 'serif'],
                 body: ['Outfit', ...defaultTheme.fontFamily.sans],
             },
             colors: {
+                // Perunggu brand — diambil langsung dari emblem logo. Dipakai untuk
+                // judul sorotan, tautan, dan aksen aktif (arah Bronze Monochrome:
+                // tanpa merah; merah hanya tersisa untuk pesan error fungsional).
                 primary: {
-                    50: '#fef2f2',
-                    100: '#fee2e2',
-                    200: '#fecaca',
-                    300: '#fca5a5',
-                    400: '#f87171',
-                    500: '#E51A1A',
-                    600: '#dc2626',
-                    700: '#b91c1c',
-                    800: '#991b1b',
-                    900: '#7f1d1d',
-                    DEFAULT: '#E51A1A',
+                    50: '#faf6ec',
+                    100: '#f4ecdd',
+                    200: '#e6d5b8',
+                    300: '#d2b98c',
+                    400: '#bd9d64',
+                    500: '#a37f45',
+                    600: '#8a6935',
+                    700: '#6f5329',
+                    800: '#553f1f',
+                    900: '#3a2b15',
+                    DEFAULT: '#8a6935',
+                },
+                // Emas tembaga — diambil dari emblem logo, dipakai untuk eyebrow & label kecil.
+                gold: {
+                    100: '#f4ecdd',
+                    200: '#e6d5b8',
+                    300: '#d2b98c',
+                    400: '#bd9d64',
+                    500: '#a37f45',
+                    600: '#8a6935',
+                    DEFAULT: '#a37f45',
+                },
+                // Latar krem hangat untuk mode terang.
+                cream: {
+                    50: '#fdfbf7',
+                    100: '#faf7f0',
+                    200: '#f4efe4',
+                    300: '#e9e1d2',
+                    DEFAULT: '#faf7f0',
+                },
+                // Netral hangat untuk teks — lebih lembut daripada abu-abu murni.
+                ink: {
+                    900: '#171412',
+                    800: '#2a2521',
+                    700: '#453d36',
+                    600: '#6b615a',
+                    500: '#8a7f76',
+                    DEFAULT: '#171412',
+                },
+                // Permukaan mode gelap bernuansa hangat agar selaras dengan emblem.
+                night: {
+                    950: '#0d0c0b',
+                    900: '#131110',
+                    800: '#1b1917',
+                    700: '#252220',
                 },
                 accent: {
                     rose: '#ff6b8a',
